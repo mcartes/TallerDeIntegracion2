@@ -109,6 +109,9 @@ def consultar(a):
 #Creacion de Identificador 
 #str(ObjectId())
 
+Up(db['Usuario'],"Francisco", "skdjskdj@gmail.com","sexo123")
+
+
 
 
 
