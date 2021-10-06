@@ -82,12 +82,41 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8">
-                            <form action="" method="post" id="frm-test">
+                            <form action="DocJson" method="post" id="frm-test">
                                 <!-- <div class="form-group">
                                     <textarea id="txt-content" name="txt-content"></textarea>
                                 </div> -->
                                 <button type="button" class="btn btn-default" form="" id="btn-enviar">Imprimir un JSON</button>
                             </form>
+
+                            <!-- Seccion Para Hacer Consultas -->
+                            <form action="/sii" method="post">
+
+                                <label for="nombreUser">La Consulta </label>
+
+                                <input type="text" name="consulta"><br/>
+                                <input type="submit" value="Consultar" />
+
+                            </form>
+                            
+                            <form action="/titulo">
+
+                                <input type="submit" value="Mostrar Info De los Archivos" />
+
+                            </form>
+
+                            <form action="/categoria">
+
+                                <input type="submit" value="Mostrar Categorias" />
+
+                            </form>
+
+                            <form action="/parrafos">
+
+                                <input type="submit" value="Titulo y Parrafos" />
+
+                            </form>
+
                         </div>
                     </div>
                 </div>

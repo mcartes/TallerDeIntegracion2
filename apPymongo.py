@@ -2,12 +2,12 @@ from pymongo import MongoClient
 import json
 from bson.objectid import ObjectId
 
-def Export(Ip):
+def Export(Ip, Base, Colec):
     client = MongoClient('localhost')
 
-    db = client['Registro']
+    db = client[Base]
 
-    columna = db['Usuario']
+    columna = db[Colec]
 
     x = columna.find_one({"_id":Ip})
 
@@ -17,15 +17,17 @@ def Export(Ip):
         json.dump(x, fp)
 
 #Funcion para subir archivos .json a MongoDB
-def Import(Archivo):
+def Import(Archivo, Base, Colec):
     client = MongoClient('localhost')
 
-    db = client['Registro']
+    db = client[Base]
 
-    columna = db['Usuario']
+    columna = db[Colec]
 
     with open(Archivo, encoding = 'utf8') as file:
         file_data = json.load(file)
+
+    #print(file_data['_id'])
 
     if isinstance(file_data, list):
         columna.insert_many(file_data) 
@@ -34,30 +36,28 @@ def Import(Archivo):
         columna.insert_one(file_data)
 
 def Acceso(user, password):
+
     client = MongoClient('localhost')
-
     db = client['Registro']
-
     columna = db['Usuario']
 
     dou = columna.find_one({"name": user})
 
     if(dou != None):
         if(dou["contra"] == password):
-            return("Acceso confirmado...")
+            return('success', dou["_id"])
         else:
-            return("Contraseña incorrecta...")
+            return('BadPass')
     else:
-        return("Usuario No Registrado...")
+        return('BadUser')
      
 
 #Funcion para subir usuarios a MangoDB 
 def Registro(nombre, password):
     client = MongoClient('localhost')
-
     db = client['Registro']
-
     columna = db['Usuario']
+
     #Revisa si el usuario existe...
     if(columna.find_one({"name": nombre}) != None):
         print("Usuario Existente...")
@@ -76,21 +76,39 @@ def Registro(nombre, password):
         columna.insert_one({"_id":str(ObjectId()),"Bienvenida": "Un gusto recibirte"})
 
 
-def consultar(a):
+def consultar(con, Base, Colec):
     client = MongoClient('localhost')
+    db = client[Base]
+    columna = db[Colec]
 
-    db = client['Registro']
+    con = con.replace("'","")
+    con = con.replace('"',"")
+    con = con.replace("","")
+    con = con.replace("{","")
+    con = con.replace("}","")
+    con = con.replace(" ","")
+    con = con.strip()
+    con = con.split(":")
+   
+    user = columna.find({con[0]:con[1]})
 
-    columna = db['Usuario']
+    return list(user)
 
-    x = columna.find(a)
-    
-    print(str(list(x)))
+def Bdato( Base, Colec):
+    client = MongoClient('localhost')
+    db = client[Base]
+    columna = db[Colec]
+
+    user = columna.find({})
+    print(user[""])
+    return user
 
 #Conexion con MongoDB       
 #client = MongoClient('localhost')
 #ad = input("Ingrese: ")
-#consultar(ad)
+#consultar('PALEONTOLOGÍA', "6157bb5d19fc18bae9f6eab7", "Documents")
+
+Bdato("6157bb5d19fc18bae9f6eab7","Documents")
 
 # #Base de datos
 #db = client['Registro']
@@ -99,7 +117,7 @@ def consultar(a):
 #columna = db['Usuario']
 
 #Export("6147d8897e7f3556a6b4d11d")
-#Import("jsontaller2.json")
+#Import("jsontaller2.json", "6157bb5d19fc18bae9f6eab7", "Documents")
 
 #Up(columna, "Ññ", "Jfdnsom", "wastv")
 # Devolver $Oid
@@ -108,9 +126,6 @@ def consultar(a):
 
 #Creacion de Identificador 
 #str(ObjectId())
-
-Up(db['Usuario'],"Francisco", "skdjskdj@gmail.com","sexo123")
-
 
 
 

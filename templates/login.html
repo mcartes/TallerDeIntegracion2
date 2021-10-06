@@ -21,20 +21,20 @@
                 <div class="button"><a href="signup.html">Registrarse</a></div>
             </div>
         </form> -->
-        <form action="">
+        <form action="/authenticate",  method="post">
             <img class="mb-4" src="{{url_for('static', filename='logoLeFroge2.png')}}" alt="logo_pagina" width="auto" height="110px">
             <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Usuario">
+                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Usuario">
                 <label for="floatingInput">Usuario</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
                 <label for="floatingPassword">Contraseña</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit"><a href="pagIndex/index.html">Iniciar Sesión</a></button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit"><a>Iniciar Sesión</a></button>
             <div class="button">
-                <a href="signup.html">¿No tienes una cuenta? Click aquí para registrarte</a>
+                <a href="/singup">¿No tienes una cuenta? Click aquí para registrarte</a>
             </div>
         </form>
     </body>
