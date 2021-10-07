@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import apPymongo as xd
+from werkzeug.utils import secure_filename
 
 Usuario = ""
 Colection = "Documents"
@@ -85,9 +86,16 @@ def parrafos():
         a = a + x + '<br>'
     return a
 
-@app.route('/DocJson', methods=['POST'])
-def DocJson():
-    return
+@app.route('/subir', methods=['POST'])
+def ImportJson():
+    global Usuario
+    global Colection
+
+    picodulce = request.files["archivosubido"]
+    filename = secure_filename(picodulce.filename)
+    xd.Import(filename, Usuario, Colection)
+
+    return redirect("/Inicio")
 
 #Consultas 
 @app.route('/sii', methods=['POST'])

@@ -73,7 +73,8 @@ def Registro(nombre, password):
         dou = columna.find_one({"name": nombre})
         db = client[dou["_id"]]
         columna = db["Documents"]
-        columna.insert_one({"_id":str(ObjectId()),"Bienvenida": "Un gusto recibirte"})
+        columna.insert_one({"_id":1, "Bienvenida": "Un gusto recibirte"})
+        columna.delete_one({"_id":1})
 
 
 def consultar(con, Base, Colec):
