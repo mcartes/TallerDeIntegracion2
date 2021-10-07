@@ -94,21 +94,52 @@ def consultar(con, Base, Colec):
 
     return list(user)
 
-def Bdato( Base, Colec):
+def Titulo(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
     columna = db[Colec]
+    jurel = []
 
-    user = columna.find({})
-    print(user[""])
-    return user
+    for x in columna.find({}):
+        for y in x['documentos']:
+            jurel.append("TITULO: " + (y['titulo']))
+            jurel.append("SUBTITULO: " + (y['subtitulo']))
+            jurel.append("FECHA: " + (y['fecha']) + "<br>")
+            
+    return list(jurel)
+
+def Categoria(Base, Colec):
+    client = MongoClient('localhost')
+    db = client[Base]
+    columna = db[Colec]
+    jurel = []
+
+    for x in columna.find({}):
+        jurel.append("CATEGORIA: " + (x['categoria']))
+        jurel.append("DESC_CATEGORIA: " + (x['desc_categoria']) + "<br>")
+            
+    return list(jurel)
+
+def Parrafo(Base, Colec):
+    client = MongoClient('localhost')
+    db = client[Base]
+    columna = db[Colec]
+    jurel = []
+
+    for x in columna.find({}):
+        for y in x['documentos']:
+            for a in y["desarrollo"]:
+                jurel.append("TITULO: " + (a['titulo_parrafo']))
+                jurel.append("PARRAFO: " + (a['parrafo']) + "<br>")
+            
+    return list(jurel)
 
 #Conexion con MongoDB       
 #client = MongoClient('localhost')
 #ad = input("Ingrese: ")
 #consultar('PALEONTOLOGÍA', "6157bb5d19fc18bae9f6eab7", "Documents")
 
-Bdato("6157bb5d19fc18bae9f6eab7","Documents")
+#Bdato("6157bb5d19fc18bae9f6eab7","Documents")
 
 # #Base de datos
 #db = client['Registro']

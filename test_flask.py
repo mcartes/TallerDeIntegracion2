@@ -57,16 +57,33 @@ def titulo():
     global Usuario
     global Colection
 
-    zi = xd.Bdato({"titulo": 1}, Usuario, Colection)
-    return zi
+    zi = xd.Titulo(Usuario, Colection)
+    a = ""
+    for x in zi:
+        a = a + x + '<br>'
+    return a
 
-@app.route('/categoria', methods=['POST'])
+@app.route('/categoria')
 def categoria():
-    return
+    global Usuario
+    global Colection
 
-@app.route('/parrafos', methods=['POST'])
+    zi = xd.Categoria(Usuario, Colection)
+    a = ""
+    for x in zi:
+        a = a + x + '<br>'
+    return a
+
+@app.route('/parrafos')
 def parrafos():
-    return
+    global Usuario
+    global Colection
+
+    zi = xd.Parrafo(Usuario, Colection)
+    a = ""
+    for x in zi:
+        a = a + x + '<br>'
+    return a
 
 @app.route('/DocJson', methods=['POST'])
 def DocJson():
