@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8">
+        <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    	<title>Registrarse en la página</title>
+    </head>
+    <body>
+        <!-- <form action="/register" method="POST">
+            <h1>Registrarse</h1>
+            
+            <div class="section">
+                <div class="title">Usuario</div>
+                <div class="field"><input type="text" id="username" name="username"></div>
+            </div>
+            <div class="form-floating">
+                <div class="title">Contraseña</div>
+                <div class="field"><input type="password" id="password" name="password"></div>
+            </div>
+            <div class="form-floating">
+                <div class="button"><input type="submit" value="Registrar usuario"></div>
+                <div class="button"><a href="login.html">Login</a></div>
+            </div>
+        </form> -->
+        <form action="/register" method="POST">
+            <img class="mb-4" src="media/logoLeFroge2.png" alt="logo_pagina" width="auto" height="110px">
+            <h1 class="h3 mb-3 fw-normal">Registrarse</h1>
+            <div class="form-floating">
+                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Usuario">
+                <label for="floatingInput">Usuario</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+                <label for="floatingPassword">Contraseña</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password_confirm" class="form-control" id="floatingPassword" placeholder="Contraseña">
+                <label for="floatingPassword">Repetir contraseña</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+            <div class="button"><a href="/login">¿Tienes una cuenta? Inicia sesión</a></div>
+        </form>
+    </body>
+</html>

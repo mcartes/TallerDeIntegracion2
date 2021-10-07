@@ -1,0 +1,45 @@
+[
+  {
+    "_id": "615e356c873db0c5c80063f0",
+    "categoria": "ASTRONOMÍA",
+    "desc_categoria": "Noticias de la ciencia que estudia los cuerpos celestes del universo, incluidos las estrellas, los planetas, sus satélites naturales, los asteroides, cometas y meteoroides, la materia interestelar, entre otros.",
+    "documentos": [
+      {
+        "id_documento": 2000,
+        "titulo": "Júpiter, superbrillante este fin de semana y en conjunción con la Luna",
+        "subtitulo": "Este fin de semana tenemos a Júpiter en oposición. Iluminado frontalmente por el Sol y a su mínima distancia de la Tierra, es el momento del año en el que se muestra más brillante.",
+        "fecha": "21/08/2021",
+        "desarrollo": [
+          {
+            "id_parrafo": 20000,
+            "titulo_parrafo": "OPOSICIÓN",
+            "parrafo": "Júpiter se localiza muy fácilmente en estas noches veraniegas. Se encuentra en la frontera entre las constelaciones de Acuario y Capricornio, y es ahora el astro más brillante del cielo tras la Luna y Venus (que luce por el oeste tras la puesta de Sol). El gigante gaseoso se levanta por el este poco después del atardecer, va ganando altura según avanza la noche y se esconde al amanecer por el Oeste."
+          },
+          {
+            "id_parrafo": 20001,
+            "titulo_parrafo": "DESCOMUNAL TORMENTA",
+            "parrafo": "Si se dispone de unos buenos prismáticos o de un pequeño telescopio, será posible observar las características bandas nubosas de Júpiter, sus cuatro mayores satélites -Io, Europa, Ganímedes y Calisto- y, sobre todo, su gran mancha roja, una gigantesca tormenta anticiclónica que dura ya más de tres siglos.Con unos 12.000 kilómetros de tamaño en la dirección Norte-Sur (similar al tamaño de la Tierra) y unos 30.000 kilómetros en dirección Este-Oeste es, sin duda, la mayor tormenta del sistema solar. El gas gira en la mancha en el sentido contrario a las agujas de un reloj generando unas violentas corrientes de chorro al sur y al norte de la mancha. En las regiones externas de la periferia de la mancha, las inestabilidades hidrodinámicas crean complejas estructuras rizadas."
+          }
+        ]
+      },
+      {
+        "id_documento": 3000,
+        "titulo": "Formación de lunas en un exoplaneta joven",
+        "subtitulo": "Por vez primera, se ha detectado con claridad una región nebulosa en torno a un exoplaneta. Con una masa tres veces superior a la de nuestra Luna, muy posiblemente se trata del disco en el que este exoplaneta, similar a Júpiter, formará un sistema de satélites.",
+        "fecha": "07/08/2021",
+        "desarrollo": [
+          {
+            "id_parrafo": 30000,
+            "titulo_parrafo": "SISTEMA PROTOPLANETARIO",
+            "parrafo": "Situada a unos 400 años luz de la Tierra en la constelación austral del Centauro, PDS 70 es una estrella joven de enorme interés. Rodeando a la estrella se ha detectado un prominente anillo de gas polvoriento a partir del cual se van formando planetas. Con ayuda del gran telescopio VLT, ya se habían detectado dos de estos planetas jóvenes, denominados PDS 70b y PDS 70c, un par muy similar a la pareja de Júpiter y Saturno que domina nuestro sistema solar."
+          },
+          {
+            "id_parrafo": 30001,
+            "titulo_parrafo": "ALREDEDOR DEL EXOPLANETA",
+            "parrafo": "Un equipo coordinado por la astrónoma Myriam Benesty (de las universidades de Chile y de Grenoble, Francia) ha observado la estrella PDS 70 con el gran interferómetro ALMA situado en la meseta de Chajnantor, a 5000 metros de altitud en pleno desierto de Atacama. Sus observaciones, resumidas en la imagen que encabeza este artículo, muestran el disco de gran diseño que rodea a la estrella. También hay una región nebulosa acumulada en la inmediata vecindad de la estrella central, posiblemente un disco más compacto que no llega a verse con gran nitidez en las observaciones."
+          }
+        ]
+      }
+    ]
+  }
+]
