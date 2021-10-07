@@ -1,0 +1,27 @@
+[
+  {
+    "_id": "615e3590064e1cc8de048f3f",
+    "categoria": "PALEONTOLOGÍA",
+    "desc_categoria": "Noticias de la ciencia natural que estudia e interpreta el pasado de la vida sobre la Tierra a través de los fósiles.",
+    "documentos": [
+      {
+        "id_documento": 1000,
+        "titulo": "Hallan un gran perro cazador que pudo convivir con hominidos en Europa hace ya 1,7 millones de años",
+        "subtitulo": "Se trata del perro cazador más antiguo descubierto cerca del continente europeo. Era un adulto joven y pesaba unos 30 kg.",
+        "fecha": "28/07/2021",
+        "desarrollo": [
+          {
+            "id_parrafo": 10000,
+            "titulo_parrafo": "Introduccion",
+            "parrafo": "Los restos de un gran perro cazador prehistórico hallados en el famoso yacimiento de Dmanisi, Georgia, podrían ser la prueba más antigua de la llegada de estos cánidos a nuestro continente. Según creen los paleontólogos que han analizado los fósiles, datados hace entre 1,77 1,76 millones de años, estos perros cazadores habrían convivido junto a los homínidos que vivían en la misma zona en la que se han encontrado."
+          },
+          {
+            "id_parrafo": 10001,
+            "titulo_parrafo": "EVOLUCION HUMANA",
+            "parrafo": "Dmanisi, situada en el Cáucaso a las puertas de Europa y cerca del cruce entre África y Eurasia, es un sitio clave para explicar la dispersión de grandes especies de animales pero sobre todo de la evolución humana. En Dmanisi se encontraron también anteriormente restos de homínidos que son la prueba directa más temprana de la salida de África. A diferencia de otros cánidos de gran tamaño, como los lobos comunes, esos perros depredadores eran capaces de ayudar a otros miembros de su grupo, como se demuestra en un cráneo muy completo de hace 1,6 millones de años de Canis (Xenocyon) lycaonoides que se encontró en 1995 en el yacimiento español de Venta Micena, expuesto en el Museo de Orce. Se trata de un cráneo asimétrico al que le faltan varios dientes. Pese a que esto indica que no podía cazar, sobrevivió varios años gracias a la ayuda de otros perros de su grupo."
+          }
+        ]
+      }
+    ]
+  }
+]
