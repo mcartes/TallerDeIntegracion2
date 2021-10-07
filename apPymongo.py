@@ -99,41 +99,41 @@ def Titulo(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
     columna = db[Colec]
-    jurel = []
+    Array = []
 
     for x in columna.find({}):
         for y in x['documentos']:
-            jurel.append("TITULO: " + (y['titulo']))
-            jurel.append("SUBTITULO: " + (y['subtitulo']))
-            jurel.append("FECHA: " + (y['fecha']) + "<br>")
+            Array.append("TITULO: " + (y['titulo']))
+            Array.append("SUBTITULO: " + (y['subtitulo']))
+            Array.append("FECHA: " + (y['fecha']) + "<br>")
             
-    return list(jurel)
+    return list(Array)
 
 def Categoria(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
     columna = db[Colec]
-    jurel = []
+    Array = []
 
     for x in columna.find({}):
-        jurel.append("CATEGORIA: " + (x['categoria']))
-        jurel.append("DESC_CATEGORIA: " + (x['desc_categoria']) + "<br>")
+        Array.append("CATEGORIA: " + (x['categoria']))
+        Array.append("DESC_CATEGORIA: " + (x['desc_categoria']) + "<br>")
             
-    return list(jurel)
+    return list(Array)
 
 def Parrafo(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
     columna = db[Colec]
-    jurel = []
+    Array = []
 
     for x in columna.find({}):
         for y in x['documentos']:
             for a in y["desarrollo"]:
-                jurel.append("TITULO: " + (a['titulo_parrafo']))
-                jurel.append("PARRAFO: " + (a['parrafo']) + "<br>")
+                Array.append("TITULO: " + (a['titulo_parrafo']))
+                Array.append("PARRAFO: " + (a['parrafo']) + "<br>")
             
-    return list(jurel)
+    return list(Array)
 
 #Conexion con MongoDB       
 #client = MongoClient('localhost')
