@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, jsonify
-import apPymongo as xd
+import apPymongo as PyM
 from werkzeug.utils import secure_filename
 
 Usuario = ""
@@ -24,7 +24,7 @@ def Acceso():
     global Usuario
     user = request.form['username']
     password = request.form['password']
-    valid = xd.Acceso(user, password)
+    valid = PyM.Acceso(user, password)
 
     if(valid[0] == 'success'):
         Usuario = valid[1]
@@ -47,7 +47,7 @@ def Registro():
     password = request.form['password']
     password_confirm =  request.form['password_confirm']
     if(password == password_confirm):
-        xd.Registro(user, password)
+        PyM.Registro(user, password)
         return "<h1> Usuario agregado <h1>"
     else:
         return "<h1> La Contraseña no es igual <h1>"
@@ -58,9 +58,9 @@ def titulo():
     global Usuario
     global Colection
 
-    zi = xd.Titulo(Usuario, Colection)
+    GetTitulo = PyM.Titulo(Usuario, Colection)
     a = ""
-    for x in zi:
+    for x in GetTitulo:
         a = a + x + '<br>'
     return a
 
@@ -69,9 +69,9 @@ def categoria():
     global Usuario
     global Colection
 
-    zi = xd.Categoria(Usuario, Colection)
+    GetCategoria = PyM.Categoria(Usuario, Colection)
     a = ""
-    for x in zi:
+    for x in GetCategoria:
         a = a + x + '<br>'
     return a
 
@@ -80,9 +80,9 @@ def parrafos():
     global Usuario
     global Colection
 
-    zi = xd.Parrafo(Usuario, Colection)
+    GetParrafo = PyM.Parrafo(Usuario, Colection)
     a = ""
-    for x in zi:
+    for x in GetParrafo:
         a = a + x + '<br>'
     return a
 
@@ -91,9 +91,9 @@ def ImportJson():
     global Usuario
     global Colection
 
-    picodulce = request.files["archivosubido"]
-    filename = secure_filename(picodulce.filename)
-    xd.Import(filename, Usuario, Colection)
+    GetFile = request.files["archivosubido"]
+    filename = secure_filename(GetFile.filename)
+    PyM.Import(filename, Usuario, Colection)
 
     return redirect("/Inicio")
 
@@ -104,9 +104,9 @@ def usuario():
     global Colection
 
     con = request.form['consulta']
-    zi = xd.consultar(con, Usuario, Colection)
+    GetConsulta = PyM.consultar(con, Usuario, Colection)
 
-    return jsonify(zi)
+    return jsonify(GetConsulta)
  
 '''
 @app.route("/edit")
