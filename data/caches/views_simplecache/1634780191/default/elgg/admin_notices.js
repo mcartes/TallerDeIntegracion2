@@ -1,0 +1,2 @@
+define("elgg/admin_notices",['jquery','elgg/Ajax'],function($,Ajax){var ajax=new Ajax();$(document).on('click','.elgg-admin-notice-dismiss',function(e){e.preventDefault();var $li=$(this).closest('.elgg-item-object-admin_notice');$li.slideUp(100);function restore(){$li.show();}
+ajax.action(this.href,{showSuccessMessages:false}).done(function(){if(!$('.elgg-item-object-admin_notice:visible').length){$('.elgg-admin-notices').remove();}}).fail(restore);});});
