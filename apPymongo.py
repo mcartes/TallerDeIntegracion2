@@ -76,7 +76,7 @@ def Registro(nombre, password):
         columna.insert_one({"_id":1, "Bienvenida": "Un gusto recibirte"})
         columna.delete_one({"_id":1})
 
-
+#consulta por cuadro de texto
 def consultar(con, Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
@@ -95,7 +95,7 @@ def consultar(con, Base, Colec):
     user = columna.find(con)
 
     return list(user)
-
+#busqueda por titulo
 def Titulo(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
@@ -109,7 +109,7 @@ def Titulo(Base, Colec):
             Array.append("FECHA: " + (y['fecha']) + "<br>")
             
     return list(Array)
-
+#busqueda por categoría
 def Categoria(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
@@ -121,7 +121,7 @@ def Categoria(Base, Colec):
         Array.append("DESC_CATEGORIA: " + (x['desc_categoria']) + "<br>")
             
     return list(Array)
-
+#busqueda por parrafo
 def Parrafo(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
