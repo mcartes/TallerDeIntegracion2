@@ -82,16 +82,17 @@ def consultar(con, Base, Colec):
     db = client[Base]
     columna = db[Colec]
 
-    con = con.replace("'","")
-    con = con.replace('"',"")
-    con = con.replace("","")
-    con = con.replace("{","")
-    con = con.replace("}","")
-    con = con.replace(" ","")
-    con = con.strip()
-    con = con.split(":")
+    # con = con.replace("'","")
+    # con = con.replace('"',"")
+    # con = con.replace("","")
+    # con = con.replace("{","")
+    # con = con.replace("}","")
+    # con = con.replace(" ","")
+    # con = con.strip()
+    # con = con.split(":")
    
-    user = columna.find({con[0]:con[1]})
+    #user = columna.find({con[0]:con[1]})
+    user = columna.find(con)
 
     return list(user)
 

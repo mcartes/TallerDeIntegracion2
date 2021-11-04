@@ -1,13 +1,42 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import apPymongo as PyM
 from werkzeug.utils import secure_filename
+import json
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+from flask_ckeditor import CKEditor, CKEditorField
 
 Usuario = ""
 Colection = "Documents"
 
 app = Flask(__name__)
+
+#CKEditor
+app.config['CKEDITOR_SERVE_LOCAL'] = True
+app.config['CKEDITOR_HEIGHT'] = 400
+app.secret_key = 'secret string'
+ckeditor = CKEditor(app)
+app.config['CKEDITOR_PKG_TYPE'] = 'custom'
+#app.config['CKEDITOR_EXTRA_PLUGINS'] = ['exportpdf', 'format']
+
+
 app.config['JSON_AS_ASCII'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
+class PostForm(FlaskForm):
+    title = StringField('Title')
+    body = CKEditorField('Body', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+#Prueba CKEditor
+@app.route("/testck")
+def testck():
+    global Usuario, Colection
+    si = {}
+    form = PostForm()
+    xd = PyM.consultar(si, Usuario, Colection)
+    return render_template("doc.html", form = form, xd=xd)
 
 #Pagina Principal
 @app.route("/Inicio")
@@ -104,18 +133,17 @@ def usuario():
     global Colection
 
     con = request.form['consulta']
-    GetConsulta = PyM.consultar(con, Usuario, Colection)
+    try: 
+        con = json.loads(con)
+        GetConsulta = PyM.consultar(con, Usuario, Colection)
+        return jsonify(GetConsulta)
 
-    return jsonify(GetConsulta)
- 
-'''
-@app.route("/edit")
-def edicion():
-    return render_template("manipulacion_archivo.html")
+    except:
+        return "Consulta erronea. EJEMPLO: {'data': 'Value'}"
+    
+@app.route('/CrearA', methods=['POST'])
+def CrearA():
+    return
 
-@app.route("/export")
-def exportaciones(): #opcional
-    return render_template("exportacion.html")
-'''
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
