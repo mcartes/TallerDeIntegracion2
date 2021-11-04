@@ -63,10 +63,10 @@
                             <button type="submit" class="btn btn-success">Subir archivo</button>
                         </div>
                     </form>
-                    <form action="/CrearA" class="mb-3 d-grid gap-1 col-3 mx-auto">
+                    <form action="/CrearA" method='post' class="mb-3 d-grid gap-1 col-3 mx-auto">
                         <label for="formFile" class="form-label">Crear un archivo</label>
-                        <input class="form-control" id="Cname" type="text" placeholder="Nombre del archivo..." required>   
-                        <input class="form-control" id="Ccategoria" type="text"  placeholder="Nombre de la categoria..." required>
+                        <input class="form-control" id="Cname" name="Cname" type="text" placeholder="Nombre del archivo..." required>   
+                        <input class="form-control" id="Ccategoria" name="Ccategoria" type="text"  placeholder="Nombre de la categoria..." required>
                         <button class="btn btn-success" type="submit" id="submit">Crear archivo</button>
                     </form>
                 </div>

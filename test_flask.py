@@ -143,7 +143,9 @@ def usuario():
     
 @app.route('/CrearA', methods=['POST'])
 def CrearA():
-    return
+    Cname = request.form['Cname'] 
+    Ccategoria = request.form['Ccategoria']
+    return redirect('/testck')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
