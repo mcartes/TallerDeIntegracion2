@@ -52,11 +52,11 @@ def testck():
     return render_template("doc.html", form = form, xd=xd)
 
 #Pagina Principal
-@app.route("/Inicio")
+@app.route("/proyecto")
 def index():
     global colections, Usuario
     colections = PyM.cat(Usuario)
-    return render_template("index.html")
+    return render_template("proyecto.html")
 
 # Inicio de Sesion
 @app.route("/login")
@@ -72,7 +72,7 @@ def Acceso():
 
     if(valid[0] == 'success'):
         Usuario = valid[1]
-        return redirect("/Inicio")
+        return redirect("/proyecto")
 
     elif(valid == 'BadUser' ):
         return("Usuario No Existe")
@@ -140,7 +140,7 @@ def ImportJson():
     GetFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     PyM.Import(filename, Usuario, Colection)
 
-    return redirect("/Inicio")
+    return redirect("/proyecto")
 
 #Consultas 
 @app.route('/sii', methods=['POST'])

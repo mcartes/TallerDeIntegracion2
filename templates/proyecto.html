@@ -28,21 +28,19 @@
             margin-right: 120px;
             margin-bottom: 20px;
             border: 1px solid black;
-            
         }
         img{
             height: 600px;
             
         }
-        img.imagenNavbar{
-            height: auto;
-            width: 150px;
-        }
         h3.carrusel ,h4.carrusel{
             background-color: rgba(26, 26, 26, 0.7);
             margin: auto;
         }
-        
+        img.imagenNavbar{
+            height: auto;
+            width: 150px;
+        }
         /*body{
             color: white;
             background-color: #131516f8;
@@ -64,8 +62,13 @@
         <div class="container-fluid">
             <img class="imagenNavbar" src="{{url_for('static', filename='logoLeFroge.png')}}" alt="logoLeFroge.png">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="jumbotron.html" class="nav-link" style="color: white;">Inicio</a></li>
-                <li class="nav-item"><a href="oaishjdioas.html" class="nav-link" style="color: white;">Proyecto</a></li>
+                <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link" style="color: white;">Inicio</a></li>
+
+                <!-- Si el usuario está logueado, mandar al proyecto, si no está logueado mandar a loguearse -->
+                <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link" style="color: white;">Proyecto</a></li>
+
+                <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
+                <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
             </ul>
             <img class="imagenNavbar" src="{{url_for('static', filename='logoUniversidad.png')}}" alt="logoUniversidad.png">
         </div>
@@ -143,14 +146,14 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <a href="#"><img src="{{url_for('static', filename='foto_2.JPG')}} class="d-block w-100" alt="foto_2.JPG"></a>
+                        <a href="#"><img src="{{url_for('static', filename='foto_2.JPG')}}" class="d-block w-100" alt="foto_2.JPG"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h3 class="carrusel">Arquetipo informativo</h3>
                             <h4 class="carrusel">Ideal para la redacción de noticias.</h4>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <a href="#"><img src="{{url_for('static', filename='foto_3.JPG')}} class="d-block w-100" alt="foto_3.JPG"></a>
+                        <a href="#"><img src="{{url_for('static', filename='foto_3.JPG')}}" class="d-block w-100" alt="foto_3.JPG"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h3 class="carrusel">Arquetipo instructivo</h3>
                             <h4 class="carrusel">Pensado para artículos instructivos e informativos.</h4>
