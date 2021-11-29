@@ -37,6 +37,11 @@ class PostForm(FlaskForm):
     body = CKEditorField('Body', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+@app.route("/")
+def start(): 
+    
+    return render_template("index.html")
+
 #Prueba CKEditor
 @app.route("/testck")
 def testck():
