@@ -25,7 +25,7 @@ def Export(Ip, Base, Colec):
 #Funcion para subir archivos .json a MongoDB
 def Import(Archivo, Base, Colec):
     client = MongoClient('localhost')
-
+    Archivo = './Save/' + Archivo
     db = client[Base]
 
     with open(Archivo, encoding = 'utf8') as file:
@@ -55,7 +55,7 @@ def Acceso(user, password):
             return('BadPass')
     else:
         return('BadUser')
-
+     
 
 #Funcion para subir usuarios a MangoDB 
 def Registro(nombre, password):

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, jsonify
 import apPymongo as PyM
 from werkzeug.utils import secure_filename
 import json
+import os
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -11,7 +12,13 @@ Usuario = ""
 Colection = "Documents"
 colections = ""
 
+os.makedirs('Save', exist_ok=True)
+
 app = Flask(__name__)
+
+#Guardar Archivos
+app.config['UPLOAD_FOLDER'] = './Save'
+
 
 #CKEditor
 app.config['CKEDITOR_SERVE_LOCAL'] = True
@@ -125,6 +132,7 @@ def ImportJson():
 
     GetFile = request.files["archivosubido"]
     filename = secure_filename(GetFile.filename)
+    GetFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     PyM.Import(filename, Usuario, Colection)
 
     return redirect("/Inicio")
