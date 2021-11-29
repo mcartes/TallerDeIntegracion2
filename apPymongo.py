@@ -2,6 +2,12 @@ from pymongo import MongoClient
 import json
 from bson.objectid import ObjectId
 
+def cat(Base):
+    client = MongoClient('localhost')
+    db = client[Base]
+    cat = db.list_collection_names()
+    return cat
+
 def Export(Ip, Base, Colec):
     client = MongoClient('localhost')
 
@@ -19,15 +25,14 @@ def Export(Ip, Base, Colec):
 #Funcion para subir archivos .json a MongoDB
 def Import(Archivo, Base, Colec):
     client = MongoClient('localhost')
-
+    Archivo = './Save/' + Archivo
     db = client[Base]
-
-    columna = db[Colec]
 
     with open(Archivo, encoding = 'utf8') as file:
         file_data = json.load(file)
-
-    #print(file_data['_id'])
+    
+    file_data['_id'] = str(ObjectId())
+    columna = db[file_data['categoria']]
 
     if isinstance(file_data, list):
         columna.insert_many(file_data) 
@@ -144,13 +149,15 @@ def Parrafo(Base, Colec):
 #Bdato("6157bb5d19fc18bae9f6eab7","Documents")
 
 # #Base de datos
-#db = client['Registro']
+#db = client['617892c28f62b61c3236cd6b']
+#print(db.list_collection_names())
 
 # #Coleccion de la base de datos
 #columna = db['Usuario']
 
+
 #Export("6147d8897e7f3556a6b4d11d")
-#Import("jsontaller2.json", "6157bb5d19fc18bae9f6eab7", "Documents")
+#Import("JsonSimple2.json", "617892c28f62b61c3236cd6b", "Documents")
 
 #Up(columna, "Ññ", "Jfdnsom", "wastv")
 # Devolver $Oid
@@ -159,6 +166,8 @@ def Parrafo(Base, Colec):
 
 #Creacion de Identificador 
 #str(ObjectId())
+
+
 
 
 
