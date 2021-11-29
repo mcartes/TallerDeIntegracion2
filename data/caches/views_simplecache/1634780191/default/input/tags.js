@@ -1,2 +1,0 @@
-define("input/tags",['jquery','tagify/tagify.min'],function($,Tagify){var tags={init:function(selector){if(!$(selector).length){return;}
-var defaults={originalInputValueFormat:valuesArr=>valuesArr.map(item=>item.value).join(',')};$(selector).each(function(index,elem){var opts=$(elem).data('tagifyOpts')||{};opts=$.extend({},defaults,opts);new Tagify(elem,opts);});}};return tags;});
