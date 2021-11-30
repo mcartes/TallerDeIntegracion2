@@ -28,6 +28,7 @@
             margin-right: 120px;
             margin-bottom: 20px;
             border: 1px solid black;
+            
         }
         img{
             height: 600px;
@@ -89,34 +90,39 @@
                                 <button class="btn btn-success" type="submit">Consultar</button>
                             </form>
                         </div> -->
-                        <form action="/subir" method="post" enctype="multipart/form-data" target="_blank">
+                        <form class= "" action="/subir" method="post" enctype="multipart/form-data" target="_blank">
                             <!-- Drag and Drop -->
                             <div class="form-group">
                                 <label for="formFile" class="form-label">Seleccione un archivo JSON</label>
                                 <div class="mb-3 d-grid gap-1 mx-auto file-loading">
                                     <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2" name="archivosubido">
-                                </div>
+                                </div><br>
                                 <div class="mb-3 d-grid gap-1 mx-auto">
-                                    <button type="submit" class="btn btn-success">Subir archivo</button>
+                                    <button type="submit" class="btn btn-primary">Subir archivo</button>
                                 </div>
                                 
                             </div> 
                         </form>
-                        <div>
-                            <h4>Categorías disponibles</h4>
-                            <ul class="list-group">
-                                <li><a href="#" class="list-group-item list-group-item-action">Astronomía<span class="numeros badge bg-primary rounded-pill">5</span></a></li>
-                                <li><a href="#" class="list-group-item list-group-item-action">Arqueología<span class="badge bg-primary rounded-pill">4</span></a></li>
-                                <li><a href="#" class="list-group-item list-group-item-action">Gastronomía<span class="badge bg-primary rounded-pill">3</span></a></li>
-                                <li><a href="#" class="list-group-item list-group-item-action">Ciencia<span class="badge bg-primary rounded-pill">7</span></a></li>
-                                <li><a href="#" class="list-group-item list-group-item-action">Cultura<span class="badge bg-primary rounded-pill">2</span></a></li>
-                            </ul>
+                        <label for="exampleFormControlTextarea1" class="form-label">Categorías</label>
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_1<span class="badge rounded ">1</span>
+                                <span class="d-block small opacity-50">Descripción de la categoría</span></a>
+                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_2<span class="badge rounded">2</span>
+                                <span class="d-block small opacity-50">Descripción de la categoría</span></a>
+                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_3<span class="badge rounded">1</span>
+                                <span class="d-block small opacity-50">Descripción de la categoría</span></a>
                         </div>
                     </div>                
+                    <!-- Documentos que posea el usuario -->
                     <div class="col align-self-end">
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Documentos que poseen la categoría seleccionada</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="28"></textarea>
+                        <label for="exampleFormControlTextarea1" class="form-label">Tus documentos</label>
+                        <div class="">
+                            <div class="list-group" id="list-tab" role="tablist">
+                                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Documento_1</a>
+                                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Documento_2</a>
+                                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Documento_3</a>
+                                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Documento_4</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +133,7 @@
     <section>
         <h3>¡O puedes crear tu propio archivo!</h3><br>
         <div>
-            <a href="#" class="btn btn-success d-grid gap-2 col-3 mx-auto">Ir al editor</a><br><br>
+            <a href="#" class="btn btn-primary d-grid gap-2 col-3 mx-auto">Ir al editor</a><br><br>
         </div>
         <h3>También puedes seleccionar distintas plantillas de acuerdo a tus necesidades.</h3><br>
         <div class="carouselSize">
