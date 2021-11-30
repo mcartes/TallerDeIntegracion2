@@ -56,6 +56,14 @@
         .fileinput-remove,
         .fileinput-upload{
             display: none;
+        }
+        #categorias.pre-scrollable {
+            max-height: 340px;
+            overflow-y: scroll;
+        }        
+        #documentos.pre-scrollable {
+            max-height: 730px;
+            overflow-y: scroll;
         }        
     </style>
 <body>
@@ -75,7 +83,7 @@
         </div>
     </header>
     <div>
-        <h1>¡Bienvenido a LeFroge!</h1>
+        <h1>¡Bienvenido a LeFrogé!</h1>
         <h3>Prueba a subir un archivo para empezar a editarlo.</h3><br>
     </div>
     <!-- Parte de arriba -->
@@ -90,13 +98,16 @@
                                 <button class="btn btn-success" type="submit">Consultar</button>
                             </form>
                         </div> -->
-                        <form class= "" action="/subir" method="post" enctype="multipart/form-data" target="_blank">
+                        <form class="" action="/subir" method="post" enctype="multipart/form-data" target="_blank">
                             <!-- Drag and Drop -->
                             <div class="form-group">
-                                <label for="formFile" class="form-label">Seleccione un archivo JSON</label>
-                                <div class="mb-3 d-grid gap-1 mx-auto file-loading">
-                                    <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2" name="archivosubido">
-                                </div><br>
+                                <label for="formFile" class="form-label">Seleccione uno o varios archivos</label>
+                                <div class="pre-scrollable">
+                                    <div class="mb-3 d-grid gap-1 mx-auto file-loading">
+                                        <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2" name="archivosubido">
+                                    </div><br>
+                                </div>
+                                
                                 <div class="mb-3 d-grid gap-1 mx-auto">
                                     <button type="submit" class="btn btn-primary">Subir archivo</button>
                                 </div>
@@ -104,25 +115,63 @@
                             </div> 
                         </form>
                         <label for="exampleFormControlTextarea1" class="form-label">Categorías</label>
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_1<span class="badge rounded ">1</span>
+                        <!-- <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_1
+                                <span class="badge rounded ">1</span>
                                 <span class="d-block small opacity-50">Descripción de la categoría</span></a>
-                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_2<span class="badge rounded">2</span>
+                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_2
+                                <span class="badge rounded">2</span>
                                 <span class="d-block small opacity-50">Descripción de la categoría</span></a>
-                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_3<span class="badge rounded">1</span>
+                            <a class="list-group-item" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categoría_3
+                                <span class="badge rounded">1</span>
                                 <span class="d-block small opacity-50">Descripción de la categoría</span></a>
-                        </div>
+                        </div> -->
+                        <form ansubmit="/coso" method="post">
+                            <div id="categorias" class="list-group mx-0 pre-scrollable">
+                                <ul class="list-group">
+                                    <li class="list-unstyled">
+                                        <label class="list-group-item d-flex gap-2">
+                                            <span class="badge rounded bg-primary d-flex align-items-center">1</span>    
+                                            <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="True">
+                                                <span>Todo
+                                                    <small class="d-block text-muted">Muestra todos los documentos del usuario que poseen y no poseen categoría.</small>
+                                                </span>
+                                        </label>
+                                    </li>
+                                    {% for nameCat in colections.cat %}
+                                    <li class="list-unstyled">
+                                        <label class="list-group-item d-flex gap-2">
+                                            <span class="badge rounded bg-primary d-flex align-items-center">1</span>  
+                                            <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{x}}> 
+                                            <span>{{nameCat}}
+                                                <small class="d-block text-muted">Muestra todos los documentos cuya categoría es {{nameCat}}.</small>
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                    </li>
+                                </ul>
+                            </div>   
+                        </form>
                     </div>                
                     <!-- Documentos que posea el usuario -->
                     <div class="col align-self-end">
                         <label for="exampleFormControlTextarea1" class="form-label">Tus documentos</label>
-                        <div class="">
-                            <div class="list-group" id="list-tab" role="tablist">
-                                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Documento_1</a>
-                                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Documento_2</a>
-                                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Documento_3</a>
-                                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Documento_4</a>
-                            </div>
+                        <div id="documentos" class="list-group mx-0 pre-scrollable">
+                            <ul class="list-group">
+                                
+                                    {% for docs in colections.docu %}
+                                    <li class="list-unstyled">
+                                        <label class="list-group-item d-flex gap-2">
+                                            
+                                            <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{x}}> 
+                                            <span>Documento {{docs.nombredoc}}
+                                                <small class="d-block text-muted">Muestra todos los documentos cuya categoría es {{docs.nombredoc}}.</small>
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -193,7 +242,7 @@
     $("#file-1").fileinput({
         theme: 'fa',
         uploadUrl: '#',
-        allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf'],
+        allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf', 'json'],
         overwriteInitial: false,
         maxFileSize:2000,
         maxFilesNum: 10,

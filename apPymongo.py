@@ -14,7 +14,7 @@ def cat(Base):
             contenido['cat'].append(x)
             contenido['Ndocu'].append(db[x].count_documents({})) 
             contenido['docu'].append(y) 
-   
+
     return contenido
 
 def Export(Ip, Base, Colec):
@@ -64,7 +64,6 @@ def Acceso(user, password):
             return('BadPass')
     else:
         return('BadUser')
-     
 
 #Funcion para subir usuarios a MangoDB 
 def Registro(nombre, password):
@@ -104,7 +103,7 @@ def consultar(con, Base, Colec):
     # con = con.replace(" ","")
     # con = con.strip()
     # con = con.split(":")
-   
+    
     #user = columna.find({con[0]:con[1]})
     user = columna.find(con)
 
