@@ -37,11 +37,6 @@ class PostForm(FlaskForm):
     body = CKEditorField('Body', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-@app.route("/")
-def start(): 
-    
-    return render_template("index.html")
-
 #Prueba CKEditor
 @app.route("/testck")
 def testck():
@@ -52,11 +47,11 @@ def testck():
     return render_template("doc.html", form = form, xd=xd)
 
 #Pagina Principal
-@app.route("/proyecto")
+@app.route("/Inicio")
 def index():
     global colections, Usuario
     colections = PyM.cat(Usuario)
-    return render_template("proyecto.html")
+    return render_template("index.html", colections = colections)
 
 # Inicio de Sesion
 @app.route("/login")
@@ -72,7 +67,7 @@ def Acceso():
 
     if(valid[0] == 'success'):
         Usuario = valid[1]
-        return redirect("/proyecto")
+        return redirect("/Inicio")
 
     elif(valid == 'BadUser' ):
         return("Usuario No Existe")
@@ -140,7 +135,7 @@ def ImportJson():
     GetFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     PyM.Import(filename, Usuario, Colection)
 
-    return redirect("/proyecto")
+    return redirect("/Inicio")
 
 #Consultas 
 @app.route('/sii', methods=['POST'])

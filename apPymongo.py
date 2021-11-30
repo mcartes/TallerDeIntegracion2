@@ -5,8 +5,17 @@ from bson.objectid import ObjectId
 def cat(Base):
     client = MongoClient('localhost')
     db = client[Base]
-    cat = db.list_collection_names()
-    return cat
+    contenido = {'cat': [],
+                 'Ndocu':[],
+                 'docu': []}
+    
+    for x in db.list_collection_names():
+        for y in db[x].find():
+            contenido['cat'].append(x)
+            contenido['Ndocu'].append(db[x].count_documents({})) 
+            contenido['docu'].append(y) 
+   
+    return contenido
 
 def Export(Ip, Base, Colec):
     client = MongoClient('localhost')
@@ -81,7 +90,7 @@ def Registro(nombre, password):
         columna.insert_one({"_id":1, "Bienvenida": "Un gusto recibirte"})
         columna.delete_one({"_id":1})
 
-#consulta por cuadro de texto
+
 def consultar(con, Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
@@ -100,7 +109,7 @@ def consultar(con, Base, Colec):
     user = columna.find(con)
 
     return list(user)
-#busqueda por titulo
+
 def Titulo(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
@@ -114,7 +123,7 @@ def Titulo(Base, Colec):
             Array.append("FECHA: " + (y['fecha']) + "<br>")
             
     return list(Array)
-#busqueda por categoría
+
 def Categoria(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
@@ -126,7 +135,7 @@ def Categoria(Base, Colec):
         Array.append("DESC_CATEGORIA: " + (x['desc_categoria']) + "<br>")
             
     return list(Array)
-#busqueda por parrafo
+
 def Parrafo(Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
@@ -153,8 +162,10 @@ def Parrafo(Base, Colec):
 #print(db.list_collection_names())
 
 # #Coleccion de la base de datos
-#columna = db['Usuario']
+#columna = db['astronomía']
 
+# Contador de documentos 
+#rint(columna.count_documents({}))
 
 #Export("6147d8897e7f3556a6b4d11d")
 #Import("JsonSimple2.json", "617892c28f62b61c3236cd6b", "Documents")
@@ -167,7 +178,7 @@ def Parrafo(Base, Colec):
 #Creacion de Identificador 
 #str(ObjectId())
 
-
+cat('61a5877f36bc2221fa52cc5f')
 
 
 
