@@ -163,5 +163,10 @@ def CrearA():
     Ccategoria = request.form['Ccategoria']
     return redirect('/testck')
 
+def coso(value):
+    catselect = value
+    print(catselect)
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

@@ -6,15 +6,20 @@ def cat(Base):
     client = MongoClient('localhost')
     db = client[Base]
     contenido = {'cat': [],
+                 'desc':[],
                  'Ndocu':[],
+                 'Total':[],
                  'docu': []}
-    
+   
     for x in db.list_collection_names():
-        for y in db[x].find():
-            contenido['cat'].append(x)
-            contenido['Ndocu'].append(db[x].count_documents({})) 
-            contenido['docu'].append(y) 
-
+        xd = db[x].find_one()
+        if(xd != None):
+            contenido['desc'].append(xd['desc_categoria'])
+            for y in db[x].find():
+                contenido['cat'].append(x)
+                contenido['Ndocu'].append(db[x].count_documents({})) 
+                contenido['docu'].append(y) 
+    contenido['Total'].append(sum(contenido['Ndocu']))
     return contenido
 
 def Export(Ip, Base, Colec):
@@ -64,6 +69,7 @@ def Acceso(user, password):
             return('BadPass')
     else:
         return('BadUser')
+     
 
 #Funcion para subir usuarios a MangoDB 
 def Registro(nombre, password):
@@ -103,7 +109,7 @@ def consultar(con, Base, Colec):
     # con = con.replace(" ","")
     # con = con.strip()
     # con = con.split(":")
-    
+   
     #user = columna.find({con[0]:con[1]})
     user = columna.find(con)
 
@@ -157,8 +163,9 @@ def Parrafo(Base, Colec):
 #Bdato("6157bb5d19fc18bae9f6eab7","Documents")
 
 # #Base de datos
-#db = client['617892c28f62b61c3236cd6b']
-#print(db.list_collection_names())
+#db = client['61a6a47f3a7f11d36393d548']
+
+
 
 # #Coleccion de la base de datos
 #columna = db['astronomía']
@@ -177,7 +184,7 @@ def Parrafo(Base, Colec):
 #Creacion de Identificador 
 #str(ObjectId())
 
-cat('61a5877f36bc2221fa52cc5f')
+#cat('61a6a47f3a7f11d36393d548')
 
 
 

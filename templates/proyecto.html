@@ -131,22 +131,24 @@
                                 <ul class="list-group">
                                     <li class="list-unstyled">
                                         <label class="list-group-item d-flex gap-2">
-                                            <span class="badge rounded bg-primary d-flex align-items-center">1</span>    
+                                            <span class="badge rounded bg-primary d-flex align-items-center">{{ colections.Total[0] }}</span>    
                                             <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="True">
-                                                <span>Todo
+                                                <span>Todos
                                                     <small class="d-block text-muted">Muestra todos los documentos del usuario que poseen y no poseen categoría.</small>
                                                 </span>
                                         </label>
                                     </li>
                                     {% for nameCat in colections.cat %}
-                                    <li class="list-unstyled">
-                                        <label class="list-group-item d-flex gap-2">
-                                            <span class="badge rounded bg-primary d-flex align-items-center">1</span>  
-                                            <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{x}}> 
-                                            <span>{{nameCat}}
-                                                <small class="d-block text-muted">Muestra todos los documentos cuya categoría es {{nameCat}}.</small>
-                                            </span>
-                                        </label>
+                                        
+                                        <li class="list-unstyled">
+                                            <label class="list-group-item d-flex gap-2">
+                                                <span class="badge rounded bg-primary d-flex align-items-center">{{ colections.Ndocu[loop.index -1] }}</span>  
+                                                <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{nameCat}}> 
+                                                <span>{{nameCat}}
+                                                    <small class="d-block text-muted">{{ colections.desc[loop.index -1] }}.</small>
+                                                </span>
+                                            </label>
+                                        
                                     {% endfor %}
                                     </li>
                                 </ul>
@@ -160,12 +162,13 @@
                             <ul class="list-group">
                                 
                                     {% for docs in colections.docu %}
+                                        
                                     <li class="list-unstyled">
                                         <label class="list-group-item d-flex gap-2">
                                             
-                                            <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{x}}> 
-                                            <span>Documento {{docs.nombredoc}}
-                                                <small class="d-block text-muted">Muestra todos los documentos cuya categoría es {{docs.nombredoc}}.</small>
+                                            <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{docs._id}}> 
+                                            <span>{{docs.nombredoc}}
+                                                <small class="d-block text-muted">Muestra todos los documentos cuya categoría es {{docs.categoria}}.</small>
                                             </span>
                                         </label>
                                     {% endfor %}
