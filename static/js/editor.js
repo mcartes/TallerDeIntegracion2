@@ -13,6 +13,8 @@ document.querySelector('#drag-block-3').addEventListener('dragstart', dragCallba
 document.querySelector('#drag-arquetipo-1').addEventListener('dragstart', dragCallback);
 document.querySelector('#drag-arquetipo-2').addEventListener('dragstart', dragCallback);
 document.querySelector('#drag-arquetipo-3').addEventListener('dragstart', dragCallback);
+document.querySelector('#drag-arquetipo-4').addEventListener('dragstart', dragCallback);
+document.querySelector('#drag-arquetipo-5').addEventListener('dragstart', dragCallback);
 
 new FroalaEditor('div#froala-editor', {
 toolbarInline: false,
@@ -45,13 +47,19 @@ heightMin: 499,
                     editor.html.insert('<p>Párrafo a editar</p>');
                 }
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-1') {
-                    editor.html.insert('<h1>T&iacute;tulo</h1><hr><h2>Subt&iacute;tulo</h2><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p>');
+                    editor.html.insert('<h1>Título</h1><h2>Subtitulo</h2><i>Autor</i><br><i>Fecha</i><hr><p>Párrafo</p><hr>');
                 }
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-2') {
-                    editor.html.insert('<h1>T&iacute;tulo sensual</h1><hr><h2>Subt&iacute;tulo</h2><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p>');
+                    editor.html.insert('<h1>Título</h1><h2>Subtitulo</h2><i>Autor</i><br><i>fecha</i><hr><h2>introducción</h2><p>párrafo</p><hr><h2>métodos</h2><p>párrafo</p><hr><h2>resultados</h2><p>párrafo</p><hr><h2>discusión</h2><p>párrafo</p>');
                 }
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-3') {
-                    editor.html.insert('<h1>T&iacute;tulo</h1><hr><h2>Subt&iacute;tulo</h2><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p>');
+                    editor.html.insert('<h1>Título</h1><h2>Subtitulo</h2><i>Autor</i><br><i>Fecha</i><hr><p>Introducción Párrafo</p><hr><p>Desarrollo Párrafo</p><hr><p>Conclusión Párrafo</p><hr>');
+                }
+                if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-4') {
+                    editor.html.insert('<h1>Título</h1><i>Autor</i><hr><h3>Índice</h3><P>Párrafo</P><hr><h3>Requerimientos</h3><p>Párrafo</p><hr><h3>Instrucciones</h3><p>Párrafo</p><hr><h3>Normas de uso</h3><p>Párrafo</p><hr>');
+                }
+                if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-5') {
+                    editor.html.insert('<H1>Título</H1><i>Autor</i><hr><p>Introducción Párrafo</p><br><p>Desarrollo Párrafo</p><br><p>Desenlace Párrafo</p>');
                 }
                 //Insertar arquetipos
 
