@@ -47,6 +47,12 @@ heightMin: 499,
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-1') {
                     editor.html.insert('<h1>T&iacute;tulo</h1><hr><h2>Subt&iacute;tulo</h2><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p>');
                 }
+                if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-2') {
+                    editor.html.insert('<h1>T&iacute;tulo sensual</h1><hr><h2>Subt&iacute;tulo</h2><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p>');
+                }
+                if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-3') {
+                    editor.html.insert('<h1>T&iacute;tulo</h1><hr><h2>Subt&iacute;tulo</h2><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi debitis saepe quo, error ratione optio ullam asperiores, quaerat ipsa sint ut voluptatem, exercitationem ea! Quam soluta consequuntur voluptas totam eius!</p>');
+                }
                 //Insertar arquetipos
 
                 // Save into undo stack the changes.

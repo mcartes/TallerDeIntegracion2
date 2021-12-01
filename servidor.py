@@ -29,7 +29,6 @@ ckeditor = CKEditor(app)
 app.config['CKEDITOR_PKG_TYPE'] = 'custom'
 #app.config['CKEDITOR_EXTRA_PLUGINS'] = ['exportpdf', 'format']
 
-
 app.config['JSON_AS_ASCII'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
@@ -37,11 +36,14 @@ class PostForm(FlaskForm):
     title = StringField('Title')
     body = CKEditorField('Body', validators=[DataRequired()])
     submit = SubmitField('Submit')
-    
+
+
+#inicio
 @app.route("/")
 def start(): 
     
     return render_template("index.html")
+
 
 #Editor
 @app.route("/editor")
@@ -207,6 +209,15 @@ def newdoc():
     
     return jsonify(doc)
 
+#prueba de arquetipos
+@app.route('/arq')
+def arquetipos():
+
+    return render_template("arquetipos.html")
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+
