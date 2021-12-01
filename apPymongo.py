@@ -12,13 +12,17 @@ def cat(Base):
                  'docu': []}
    
     for x in db.list_collection_names():
+
+        contenido['cat'].append(x)
+        contenido['Ndocu'].append(db[x].count_documents({}))
         xd = db[x].find_one()
         if(xd != None):
             contenido['desc'].append(xd['desc_categoria'])
-            for y in db[x].find():
-                contenido['cat'].append(x)
-                contenido['Ndocu'].append(db[x].count_documents({})) 
+            for y in db[x].find(): 
                 contenido['docu'].append(y) 
+        else:
+            contenido['desc'].append('Sin archivos...')
+            
     contenido['Total'].append(sum(contenido['Ndocu']))
     return contenido
 
