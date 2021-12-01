@@ -159,6 +159,15 @@ def Parrafo(Base, Colec):
             
     return list(Array)
 
+def editar(Base, Colec, doc):
+    client = MongoClient('localhost')
+    db = client[Base]
+    columna = db[Colec]
+    
+    x = columna.find_one({'_id': doc})
+    
+    return x
+
 #Conexion con MongoDB       
 #client = MongoClient('localhost')
 #ad = input("Ingrese: ")

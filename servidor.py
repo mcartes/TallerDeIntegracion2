@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, jsonify
+from flask import Flask, render_template, request, redirect, jsonify, flash, url_for
 import apPymongo as PyM
 from werkzeug.utils import secure_filename
 import json
@@ -139,7 +139,7 @@ def ImportJson():
     filename = secure_filename(GetFile.filename)
     GetFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     PyM.Import(filename, Usuario, Colection)
-
+    flash('Contact Updated Successfully')
     return redirect("/proyecto")
 
 #Consultas 
@@ -163,9 +163,15 @@ def CrearA():
     Ccategoria = request.form['Ccategoria']
     return redirect('/testck')
 
-def coso(value):
-    catselect = value
-    print(catselect)
+@app.route('/coso', methods=['POST'])
+def coso():
+    global Usuario
+    catselect = request.form['listGroupRadios'].split(',')
+    print(catselect[0])
+    print(catselect[1])
+    catselect = PyM.editar(Usuario, catselect[1], catselect[0])
+    
+    return jsonify(catselect)
 
 
 if __name__ == '__main__':
