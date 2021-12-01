@@ -10,9 +10,12 @@ def cat(Base):
                  'Ndocu':[],
                  'Total':[],
                  'docu': []}
+    
+    for x in db.list_collection_names():
+        if(db[x].count_documents({}) == 0):
+            if(x != 'Documents'):db[x].drop()
    
     for x in db.list_collection_names():
-
         contenido['cat'].append(x)
         contenido['Ndocu'].append(db[x].count_documents({}))
         xd = db[x].find_one()

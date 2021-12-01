@@ -191,7 +191,33 @@
     <section>
         <h3>¡O puedes crear tu propio archivo!</h3><br>
         <div>
-            <a href="#" class="btn btn-primary d-grid gap-2 col-3 mx-auto">Ir al editor</a><br><br>
+            <form action="/newdoc",  method="post">
+
+                <div class="form-floating">
+                    <input type="text" name="nombredoc" class="form-control" id="nombredoc" placeholder="nombredoc" required>
+                    <label for="floatingInput">Nombre Documento</label>
+                </div>
+                <div class="form-floating">
+                    {% for nameCat in colections.cat %}
+                                            
+                        <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id='{{nameCat}}' value='{{nameCat}}|{{ colections.desc[loop.index -1]}}'> {{nameCat}} 
+                               
+                    {% endfor %}
+                        <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id="new" value="Nuevo" > Nuevo
+                        
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="newcat" class="form-control" id="newcat" placeholder="newcat", required disabled>
+                    <label for="floatingPassword">Nueva Categoria</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="desc_newcat" class="form-control" id="desc_newcat" placeholder="desc_newcat" required disabled>
+                    <label for="floatingPassword">Describa de que trata su categoria</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit"><a>Ir al editor</a></button>
+            
+            </form>
+            
         </div>
         <h3>También puedes seleccionar distintas plantillas de acuerdo a tus necesidades.</h3><br>
         <div class="carouselSize">
@@ -248,8 +274,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
     
 <script>
-    hola = {{colections|tojson}}
-    console.log(hola)
+    function valid(){
+        var element1 = document.getElementById("new");
+        var element2 = document.getElementById("newcat");
+        var element3 = document.getElementById("desc_newcat");
+        var element4 = document.getElementById("Documents");
+        element2.disabled = element1.checked? false:true;
+        element3.disabled = element1.checked? false:true;
+
+        if(!element1.disabled){
+            element2.focus();
+            element3.focus();
+    
+        }
+
+    }
     $("#file-1").fileinput({
         theme: 'fa',
         uploadUrl: '#',

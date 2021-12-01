@@ -7,6 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from flask_ckeditor import CKEditor, CKEditorField
+from datetime import date
 
 Usuario = ""
 Colection = "Documents"
@@ -42,14 +43,14 @@ def start():
     
     return render_template("index.html")
 
-#Prueba CKEditor
-@app.route("/testck")
-def testck():
+#Editor
+@app.route("/editor")
+def editor():
     global Usuario, Colection
     si = {}
     form = PostForm()
     xd = PyM.consultar(si, Usuario, Colection)
-    return render_template("ckeditor.html", form = form, xd=xd)
+    return render_template("editor.html", form = form, xd=xd)
 
 #Pagina Principal
 @app.route("/proyecto")
@@ -161,7 +162,7 @@ def usuario():
 def CrearA():
     Cname = request.form['Cname'] 
     Ccategoria = request.form['Ccategoria']
-    return redirect('/testck')
+    return redirect('/editor')
 
 @app.route('/coso', methods=['POST'])
 def coso():
@@ -172,6 +173,38 @@ def coso():
     catselect = PyM.editar(Usuario, catselect[1], catselect[0])
     
     return jsonify(catselect)
+
+@app.route('/newdoc', methods=['POST'])
+def newdoc():
+    global Usuario
+    doc = {
+    "_id": "1314",
+    "categoria": "",
+	"fecha": date.today().isoformat(),
+    "desc_categoria": "",
+	"nombredoc": "",
+    "desarrollo": {}
+	}
+    doc['nombredoc'] = request.form['nombredoc']
+    Ncate = request.form['Ncate'].split('|')
+
+    if(Ncate[0] == 'Nuevo'):
+        newcat = request.form['newcat']
+        desc_newcat = request.form['desc_newcat']
+        doc['categoria'] = newcat
+        doc['desc_categoria'] = desc_newcat
+    else:
+        doc['categoria'] = Ncate[0]
+        doc['desc_categoria'] = Ncate[1]
+        if(Ncate[0] == "Documents"):
+            doc['desc_categoria'] = "Archivos sin categoria"
+            
+    with open('./Save/new.json', 'w') as f:
+        json.dump(doc, f)
+        
+    PyM.Import('new.json', Usuario, Colection)
+    
+    return jsonify(doc)
 
 
 if __name__ == '__main__':
