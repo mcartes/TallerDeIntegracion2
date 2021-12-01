@@ -1,0 +1,19 @@
+img.imagenNavbar{
+    height: auto;
+    width: 150px;
+}
+.arquetipo, .editBlock{
+    border: solid 1px #CCC;
+    background-color: rgb(243, 243, 243);
+    padding: 5px;
+    width: 300px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.editBlock:hover, .arquetipo:hover{
+    background-color: rgba(2, 116, 216, 0.87);
+    transition: background-color .5s;
+}
+div.small{
+    color: rgb(48, 48, 48);
+}

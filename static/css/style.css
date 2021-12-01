@@ -1,0 +1,70 @@
+h1,h2,h3,h4,p{
+    text-align: center;
+    margin: auto;
+}
+.align-self-end{  
+    margin-bottom: auto;
+    
+}
+img.imagenNavbar{
+    height: auto;
+    width: 150px;
+}
+.carouselSize{
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    
+}
+img{
+    height: 600px;
+    
+}
+h3.carrusel ,h4.carrusel{
+    background-color: rgba(26, 26, 26, 0.7);
+    margin: auto;
+}
+
+/*body{
+    color: white;
+    background-color: #131516f8;
+}*/
+.main-section{
+    margin:0 auto;
+    padding: 20px;
+    margin-top: 100px;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px #c1c1c1;
+}
+.fileinput-remove,
+.fileinput-upload{
+    display: none;
+}
+#categorias.pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+}        
+#documentos.pre-scrollable {
+    max-height: 730px;
+    overflow-y: scroll;
+}     
+
+#drop_zone {
+    border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: #bbb;
+}
+#info {
+    font-family: monospace;
+    font-size: 18px;
+}
+#list {
+    font-size: 15px;
+}

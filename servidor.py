@@ -138,6 +138,7 @@ def ImportJson():
 
     GetFile = request.files["archivosubido"]
     filename = secure_filename(GetFile.filename)
+    # filename = 'sd.json'
     GetFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     PyM.Import(filename, Usuario, Colection)
     flash('Contact Updated Successfully')

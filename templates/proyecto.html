@@ -5,6 +5,8 @@
         <title>Página</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Descripción que sale en las búsquedas">
+
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -14,58 +16,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
         
     </head>
-    <style>
-        h1,h2,h3,h4,p{
-            text-align: center;
-            margin: auto;
-        }
-        .align-self-end{  
-            margin-bottom: auto;
-            
-        }
-        .carouselSize{
-            margin-left: 120px;
-            margin-right: 120px;
-            margin-bottom: 20px;
-            border: 1px solid black;
-            
-        }
-        img{
-            height: 600px;
-            
-        }
-        h3.carrusel ,h4.carrusel{
-            background-color: rgba(26, 26, 26, 0.7);
-            margin: auto;
-        }
-        img.imagenNavbar{
-            height: auto;
-            width: 150px;
-        }
-        /*body{
-            color: white;
-            background-color: #131516f8;
-        }*/
-        .main-section{
-            margin:0 auto;
-            padding: 20px;
-            margin-top: 100px;
-            background-color: #fff;
-            box-shadow: 0px 0px 20px #c1c1c1;
-        }
-        .fileinput-remove,
-        .fileinput-upload{
-            display: none;
-        }
-        #categorias.pre-scrollable {
-            max-height: 340px;
-            overflow-y: scroll;
-        }        
-        #documentos.pre-scrollable {
-            max-height: 730px;
-            overflow-y: scroll;
-        }        
-    </style>
 <body>
     <header class="navbar navbar-expand navbar-dark bg-dark d-flex justify-content-center py-3"><!-- justify-content-center -->
         <div class="container-fluid">
@@ -75,6 +25,7 @@
 
                 <!-- Si el usuario está logueado, mandar al proyecto, si no está logueado mandar a loguearse -->
                 <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link" style="color: white;">Proyecto</a></li>
+                <li class="nav-item"><a href="http://127.0.0.1:5000/editor" class="nav-link" style="color: white;">Editor</a></li>
 
                 <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
                 <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
@@ -102,12 +53,21 @@
                             <!-- Drag and Drop -->
                             <div class="form-group">
                                 <label for="formFile" class="form-label">Seleccione uno o varios archivos</label>
-                                <div class="pre-scrollable">
+                                <!-- <div class="pre-scrollable">
                                     <div class="mb-3 d-grid gap-1 mx-auto file-loading">
-                                        <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2" name="archivosubido">
+                                        <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" name="archivosubido">
                                     </div><br>
+                                </div> -->
+                                <div id="drop_zone">Arrastra y suelta tus archivos</div>
+                                <div id="info" class="pre-scrollable">
+
+                                        <p></p>
+                                        <ul id="list"></ul>
+                                    
                                 </div>
-                                
+                                <!-- <div class="mb-3 d-grid gap-1 mx-auto">
+                                    <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" name="archivosubido">
+                                </div> -->
                                 <div class="mb-3 d-grid gap-1 mx-auto">
                                     <button type="submit" class="btn btn-primary">Subir archivo</button>
                                 </div>
@@ -201,7 +161,6 @@
                     {% for nameCat in colections.cat %}
                                             
                         <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id='{{nameCat}}' value='{{nameCat}}|{{ colections.desc[loop.index -1]}}'> {{nameCat}} 
-                               
                     {% endfor %}
                         <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id="new" value="Nuevo" > Nuevo
                         
@@ -262,7 +221,10 @@
         </div>
     </section>
 </body>
+<script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
 <!-- Boostrap -->
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
