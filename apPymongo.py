@@ -60,6 +60,8 @@ def Import(Archivo, Base, Colec):
 
     else:
         columna.insert_one(file_data)
+    
+    return file_data['_id']
 
 def Acceso(user, password):
 
@@ -171,6 +173,14 @@ def editar(Base, Colec, doc):
     
     return x
 
+def guardar(Base, Colec, doc, contenido):
+    client = MongoClient('localhost')
+    db = client[Base]
+    columna = db[Colec]
+    
+    columna.update_one({'_id': doc}, {"$set": {'desarrollo': contenido}})
+    
+    return 'Se ha guardado correctamente'
 #Conexion con MongoDB       
 #client = MongoClient('localhost')
 #ad = input("Ingrese: ")

@@ -57,8 +57,7 @@
             <div class="container-lg align-self-stretch p-2 bd-highlight">
                 <div class="">
                     <div id="froala-editor">
-                        <h1>Título</h1>
-                        <p>Empieza a editar...</p>
+                        
                     </div>
                 </div>
             </div>
@@ -66,24 +65,19 @@
             <div class="container-small p-2 bd-highlight bg-light border rounded-3">
                 <div class="p-2 bd-highlight">
                     <label>Arquetipos</label>
-                    <div id="drag-arquetipo-1" class="arquetipo" draggable="true"><strong>Cultural.</strong>
+                    <div id="drag-arquetipo-1" class="arquetipo" draggable="true"><strong>Arquetipo de cultura.</strong>
                         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                     </div>
-                    <div id="drag-arquetipo-2" class="arquetipo" draggable="true"><strong>Científico.</strong>
+                    <div id="drag-arquetipo-2" class="arquetipo" draggable="true"><strong>Arquetipo de ciencia.</strong>
                         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                     </div>
-                    <div id="drag-arquetipo-3" class="arquetipo" draggable="true"><strong>Informativo.</strong>
-                        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-                    </div>
-                    <div id="drag-arquetipo-4" class="arquetipo" draggable="true"><strong>Instructivo.</strong>
-                        <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-                    </div>
-                    <div id="drag-arquetipo-5" class="arquetipo" draggable="true"><strong>Narrativo.</strong>
+                    <div id="drag-arquetipo-3" class="arquetipo" draggable="true"><strong>Arquetipo de astronomía.</strong>
                         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
                     </div>
                 </div>
             </div>
         </div>
+        <button class="w-100 btn btn-lg btn-primary" onclick="guardar()"><a>Guardar Documento</a></button>
         <div class="container-md">
             <div class="container-fluid">
                 <div class="row">
@@ -115,4 +109,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
+<script> docu =  {{ doc|tojson }}</script>
 </html>

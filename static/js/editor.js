@@ -16,7 +16,7 @@ document.querySelector('#drag-arquetipo-3').addEventListener('dragstart', dragCa
 document.querySelector('#drag-arquetipo-4').addEventListener('dragstart', dragCallback);
 document.querySelector('#drag-arquetipo-5').addEventListener('dragstart', dragCallback);
 
-new FroalaEditor('div#froala-editor', {
+var editor = new FroalaEditor('div#froala-editor', {
 toolbarInline: false,
 charCounterCount: true,
 heightMax: 500,
@@ -24,6 +24,8 @@ heightMin: 499,
     events: {
         initialized: function () {
             var editor = this;
+
+			editor.html.insert(docu['desarrollo']);
 
             editor.events.on('drop', function (dropEvent) {
                 // Focus at the current posisiton.
@@ -46,6 +48,9 @@ heightMin: 499,
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-block-3'){
                     editor.html.insert('<p>Párrafo a editar</p>');
                 }
+                
+                //Insertar arquetipos
+                
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-1') {
                     editor.html.insert('<h1>Título</h1><h2>Subtitulo</h2><i>Autor</i><br><i>Fecha</i><hr><p>Párrafo</p><hr>');
                 }
@@ -61,7 +66,6 @@ heightMin: 499,
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-arquetipo-5') {
                     editor.html.insert('<H1>Título</H1><i>Autor</i><hr><p>Introducción Párrafo</p><br><p>Desarrollo Párrafo</p><br><p>Desenlace Párrafo</p>');
                 }
-                //Insertar arquetipos
 
                 // Save into undo stack the changes.
                 editor.undo.saveStep();
@@ -82,3 +86,23 @@ heightMin: 499,
         }    
     }
 });
+
+function guardar(){
+    var contenido = editor.html.get();
+    var cat = docu['categoria']
+    var doc = docu['_id']
+    console.log(cat, doc)
+    $.ajax({
+        url:"/save",
+        type:"POST",
+        data: {"value": contenido, 
+                "cat": cat, 
+                "doc": doc},
+        success: function(response){
+            console.log(response);
+        },
+        error: function(error){
+        //console.log(error);
+        },
+    });
+}

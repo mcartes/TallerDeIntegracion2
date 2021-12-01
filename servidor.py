@@ -29,6 +29,7 @@ ckeditor = CKEditor(app)
 app.config['CKEDITOR_PKG_TYPE'] = 'custom'
 #app.config['CKEDITOR_EXTRA_PLUGINS'] = ['exportpdf', 'format']
 
+
 app.config['JSON_AS_ASCII'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
@@ -36,23 +37,22 @@ class PostForm(FlaskForm):
     title = StringField('Title')
     body = CKEditorField('Body', validators=[DataRequired()])
     submit = SubmitField('Submit')
-
-
-#inicio
+    
 @app.route("/")
 def start(): 
     
     return render_template("index.html")
 
-
 #Editor
-@app.route("/editor")
-def editor():
+@app.route("/editor/<cat>/<doc>")
+def editor(cat, doc):
     global Usuario, Colection
-    si = {}
-    form = PostForm()
-    xd = PyM.consultar(si, Usuario, Colection)
-    return render_template("editor.html", form = form, xd=xd)
+    #si = {}
+    #form = PostForm()
+    #xd = PyM.consultar(si, Usuario, Colection)
+    #return render_template("editor.html", form = form, xd=xd)
+    documento = PyM.editar(Usuario, cat, doc)
+    return render_template("editor.html", doc = documento)
 
 #Pagina Principal
 @app.route("/proyecto")
@@ -171,11 +171,10 @@ def CrearA():
 def coso():
     global Usuario
     catselect = request.form['listGroupRadios'].split(',')
-    print(catselect[0])
-    print(catselect[1])
-    catselect = PyM.editar(Usuario, catselect[1], catselect[0])
+   
+    #catselect = PyM.editar(Usuario, catselect[1], catselect[0])
     
-    return jsonify(catselect)
+    return redirect(url_for("editor", cat=catselect[1], doc=catselect[0] ))
 
 @app.route('/newdoc', methods=['POST'])
 def newdoc():
@@ -186,7 +185,7 @@ def newdoc():
 	"fecha": date.today().isoformat(),
     "desc_categoria": "",
 	"nombredoc": "",
-    "desarrollo": {}
+    "desarrollo": ""
 	}
     doc['nombredoc'] = request.form['nombredoc']
     Ncate = request.form['Ncate'].split('|')
@@ -205,19 +204,18 @@ def newdoc():
     with open('./Save/new.json', 'w') as f:
         json.dump(doc, f)
         
-    PyM.Import('new.json', Usuario, Colection)
+    id = PyM.Import('new.json', Usuario, Colection)
     
-    return jsonify(doc)
+    return redirect(url_for("editor", cat=Ncate[0], doc=id ))
 
-#prueba de arquetipos
-@app.route('/arq')
-def arquetipos():
-
-    return render_template("arquetipos.html")
-
-
+@app.route('/save', methods=['POST'])
+def save():
+    global Usuario
+    datos = request.form['value']
+    cat = request.form['cat']
+    doc = request.form['doc']
+  
+    return PyM.guardar(Usuario, cat, doc, datos)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
-
-
