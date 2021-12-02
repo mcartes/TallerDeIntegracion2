@@ -171,7 +171,7 @@ def CrearA():
 def coso():
     global Usuario
     catselect = request.form['listGroupRadios'].split(',')
-   
+
     #catselect = PyM.editar(Usuario, catselect[1], catselect[0])
     
     return redirect(url_for("editor", cat=catselect[1], doc=catselect[0] ))
@@ -215,7 +215,7 @@ def save():
     datos = request.form['value']
     cat = request.form['cat']
     doc = request.form['doc']
-  
+
     return PyM.guardar(Usuario, cat, doc, datos)
 
 if __name__ == '__main__':

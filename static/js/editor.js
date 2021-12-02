@@ -39,7 +39,7 @@ heightMin: 499,
 
                 // Insertar bloques de código
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-block-1') {
-                    editor.html.insert('<pre>Código</pre>');
+                    editor.html.insert('<pre class="preBorder">Código</pre>');
                 }
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-block-2'){
                     editor.html.insert('<h3>Estructura de arquetipo con h3</h3>');

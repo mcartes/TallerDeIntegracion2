@@ -10,6 +10,13 @@ img.imagenNavbar{
     border-radius: 5px;
     margin-top: 5px;
 }
+.preBorder{
+    border:1px solid rgb(190, 190, 190);
+    page-break-inside:avoid;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    padding: 10px;
+}
 .editBlock:hover, .arquetipo:hover{
     background-color: rgba(2, 116, 216, 0.87);
     transition: background-color .5s;

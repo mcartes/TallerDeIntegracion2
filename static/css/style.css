@@ -10,26 +10,12 @@ img.imagenNavbar{
     height: auto;
     width: 150px;
 }
-.carouselSize{
-    margin-left: 120px;
-    margin-right: 120px;
-    margin-bottom: 20px;
-    border: 1px solid black;
-    
+#loginContainer, #registerContainer{
+    display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
 }
-img{
-    height: 600px;
-    
-}
-h3.carrusel ,h4.carrusel{
-    background-color: rgba(26, 26, 26, 0.7);
-    margin: auto;
-}
-
-/*body{
-    color: white;
-    background-color: #131516f8;
-}*/
 .main-section{
     margin:0 auto;
     padding: 20px;
@@ -46,7 +32,7 @@ h3.carrusel ,h4.carrusel{
     overflow-y: scroll;
 }        
 #documentos.pre-scrollable {
-    max-height: 730px;
+    max-height: 495px;
     overflow-y: scroll;
 }     
 
