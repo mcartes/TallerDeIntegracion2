@@ -27,7 +27,12 @@
                     <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link" style="color: white;">Proyecto</a></li>
 
                     <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
-                    <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
+                    {% if act == True %}
+                        <li class="nav-item"><a href="http://127.0.0.1:5000/deslogin" class="nav-link" style="color: white;">Cerrar Sesión</a></li>
+                    {% else %}
+                        <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
+                        
+                    {% endif %}
                     <li class="nav-item"><a href="https://github.com/mcartes/TallerdeIntegracion2.git" class="nav-link bi bi-github" style="color: white;"> Repositorio</a></li>
                 </ul>
                 <img class="imagenNavbar" src="{{url_for('static', filename='logoUniversidad.png')}}" alt="logoUniversidad.png">

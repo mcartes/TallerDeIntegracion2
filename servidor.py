@@ -12,6 +12,7 @@ from datetime import date
 Usuario = ""
 Colection = "Documents"
 colections = ""
+act = False
 
 os.makedirs('Save', exist_ok=True)
 
@@ -39,28 +40,28 @@ class PostForm(FlaskForm):
     submit = SubmitField('Submit')
 
 @app.route("/")
-def start():
-
-    return render_template("index.html")
+def start(): 
+    global act
+    return render_template("index.html", act = act)
 
 #Editor
 @app.route("/editor/<cat>/<doc>")
 def editor(cat, doc):
-    global Usuario, Colection
+    global Usuario, Colection, act
     #si = {}
     #form = PostForm()
     #xd = PyM.consultar(si, Usuario, Colection)
     #return render_template("editor.html", form = form, xd=xd)
     documento = PyM.editar(Usuario, cat, doc)
-    return render_template("editor.html", doc = documento)
+    return render_template("editor.html", doc = documento, act = act)
 
 #Pagina Principal
 @app.route("/proyecto")
 def index():
-    global colections, Usuario
+    global colections, Usuario, act
     if(Usuario != ""):
         colections = PyM.cat(Usuario)
-        return render_template("proyecto.html", colections = colections)
+        return render_template("proyecto.html", colections = colections, act = act)
     else:
         return redirect("/login")
 
@@ -69,15 +70,25 @@ def index():
 def login():
     return render_template("login.html")
 
+@app.route("/deslogin")
+def deslogin():
+    global Usuario, Colection, colections, act
+    Usuario = ""
+    Colection = "Documents"
+    colections = ""
+    act = False
+    return redirect("/")
+    
 @app.route('/authenticate', methods=['POST'])
 def Acceso():
-    global Usuario
+    global Usuario, act
     user = request.form['username']
     password = request.form['password']
     valid = PyM.Acceso(user, password)
 
     if(valid[0] == 'success'):
         Usuario = valid[1]
+        act = True
         return redirect("/proyecto")
 
     elif(valid == 'BadUser' ):
@@ -150,18 +161,17 @@ def ImportJson():
 #Consultas
 @app.route('/sii', methods=['POST'])
 def usuario():
-    global Usuario
-    global Colection
+    global Usuario, colections
 
     con = request.form['consulta']
     try:
         con = json.loads(con)
-        GetConsulta = PyM.consultar(con, Usuario, Colection)
+        GetConsulta = PyM.consultar(con, Usuario, colections['cat'])
         return jsonify(GetConsulta)
 
     except:
-        return "Consulta erronea. EJEMPLO: {'data': 'Value'}"
-
+       return "Consulta erronea. EJEMPLO: {'data': 'Value'}"
+    
 @app.route('/CrearA', methods=['POST'])
 def CrearA():
     Cname = request.form['Cname']

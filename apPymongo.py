@@ -108,21 +108,24 @@ def Registro(nombre, password):
 def consultar(con, Base, Colec):
     client = MongoClient('localhost')
     db = client[Base]
-    columna = db[Colec]
+    user = {"datos": []}
+    for x in range(len(Colec)):
+       
+        # con = con.replace("'","")
+        # con = con.replace('"',"")
+        # con = con.replace("","")
+        # con = con.replace("{","")
+        # con = con.replace("}","")
+        # con = con.replace(" ","")
+        # con = con.strip()
+        # con = con.split(":")
+    
+        #user = columna.find({con[0]:con[1]})
+        for y in db[Colec[x]].find(con):
+            user["datos"].append(y)
+           
 
-    # con = con.replace("'","")
-    # con = con.replace('"',"")
-    # con = con.replace("","")
-    # con = con.replace("{","")
-    # con = con.replace("}","")
-    # con = con.replace(" ","")
-    # con = con.strip()
-    # con = con.split(":")
-
-    #user = columna.find({con[0]:con[1]})
-    user = columna.find(con)
-
-    return list(user)
+    return list(user["datos"])
 
 def Titulo(Base, Colec):
     client = MongoClient('localhost')

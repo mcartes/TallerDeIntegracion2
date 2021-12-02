@@ -27,8 +27,22 @@
                 <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link" style="color: white;">Proyecto</a></li>
 
                 <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
-                <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
+                {% if act == True %}
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/deslogin" class="nav-link" style="color: white;">Cerrar Sesión</a></li>
+                        
+                {% else %}
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
+                {% endif %}
+                
                 <li class="nav-item"><a href="https://github.com/mcartes/TallerdeIntegracion2.git" class="nav-link bi bi-github" style="color: white;"> Repositorio</a></li>
+                <li class="nav-item">
+                    <div class="container-fluid">
+                        <form class="d-flex d-grid gap-2 mx-auto" action="/sii" method="post">
+                            <input class="form-control me-2" type="search" placeholder="Escriba una consulta..." aria-label="Search" name="consulta"/>
+                            <button class="btn btn-success" type="submit">Consultar</button>
+                        </form>
+                    </div>
+                </li>
             </ul>
             <img class="imagenNavbar" src="{{url_for('static', filename='logoUniversidad.png')}}" alt="logoUniversidad.png">
         </div>
@@ -49,6 +63,7 @@
                                 <button class="btn btn-success" type="submit">Consultar</button>
                             </form>
                         </div> -->
+                     
                         <form class="" action="/subir" method="post" enctype="multipart/form-data">
                             <!-- Drag and Drop -->
                             <div class="form-group">
@@ -58,16 +73,18 @@
                                         <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" name="archivosubido">
                                     </div><br>
                                 </div> -->
-                                <div id="drop_zone">Arrastra y suelta tus archivos</div>
+                                <div id="drop_zone">
+                                    <div class="mb-3 d-grid gap-1 mx-auto">
+                                        <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" name="archivosubido" required>
+                                    </div>
+                                </div>
                                 <div id="info" class="pre-scrollable">
 
                                         <p></p>
                                         <ul id="list"></ul>
                                     
                                 </div>
-                                <div class="mb-3 d-grid gap-1 mx-auto">
-                                    <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" name="archivosubido">
-                                </div>
+                                
                                 <div class="mb-3 d-grid gap-1 mx-auto">
                                     <button type="submit" class="btn btn-primary">Subir archivo</button>
                                 </div>

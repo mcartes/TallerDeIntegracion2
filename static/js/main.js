@@ -20,6 +20,8 @@ function handleDrop(e) {
         }
 
         var x = document.createElement('li');
+        var y = document.getElementById('file-1');
+        y.innerHTML = e.dataTransfer.files;
         x.innerText = (folder ? 'Folder: ' : 'File: ') + f.name + (f.type ? ' (' + f.type + ')' : '') + ', ' + f.size + 'bytes';
         list.appendChild(x);
     }
