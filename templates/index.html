@@ -21,11 +21,11 @@
             <div class="container-fluid">
                 <img class="imagenNavbar" src="{{url_for('static', filename='logoLeFroge.png')}}" alt="logoLeFroge.png">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link" style="color: white;">Inicio</a></li>
-
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link bi bi-house-fill" style="color: white;"> Inicio</a></li>
+    
                     <!-- Si el usuario está logueado, mandar al proyecto, si no está logueado mandar a loguearse -->
-                    <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link" style="color: white;">Proyecto</a></li>
-
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link bi bi-tools" style="color: white;"> Proyecto</a></li>
+    
                     <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
                     {% if act == True %}
                         <li class="nav-item"><a href="http://127.0.0.1:5000/deslogin" class="nav-link" style="color: white;">Cerrar Sesión</a></li>
@@ -42,15 +42,13 @@
             <div class="p-5 mb-4 bg-light border rounded-3">
                 <div class="container-fluid py-5">
                     <h1 class="display-5 fw-bold">Bienvenidos a nuestro proyecto</h1>
-                    <!-- <p class="col-md-8 fs-4">Acá vamos a presentar el proyecto y darnos a conocer como grupo</p> -->
-                    <p class="col-md-12 fs-5"><b>LeFrogé</b> es un proyecto grupal creado para el ramo <b>Taller de integración II</b>. El proyecto consiste en 
+                    <p class="col-md-12 fs-5"><b>Le_Frogé</b> es un proyecto grupal creado para el ramo <b>Taller de integración II</b>. El proyecto consiste en 
                         crear un entorno digital estructurado en base al proceso científico para <b>crear, escribir, editar, guardar 
                         y exportar artículos científicos</b>. El investigador tiene la posibilidad de interactuar con los diversos 
                         elementos constitutivos de un proceso de investigación, los cuales se integran para dar el formato y las 
                         orientaciones básicas del diseño metodológico seleccionado. De esta forma el proceso de elaboración del 
                         documento científico es más amigable y accesible para personas menos experimentadas y optimiza el
                         proceso de aquellos usuarios expertos.</p><br>
-                    <!-- <button class="btn btn-success center-block" type="button"><a href="oaishjdioas.html">Ir al proyecto</a></button> -->
                 </div>
             </div>
             <div class="row align-items-md-stretch">
@@ -80,7 +78,7 @@
                 </div>
             </div>
             <footer class="pt-3 mt-4 text-muted border-top">
-            © 2021
+            Le_Frogé - Universidad Católica de Temuco © 2021
             </footer>
         </div>
     </main>

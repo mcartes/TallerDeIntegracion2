@@ -105,13 +105,15 @@ function guardar(){
         //console.log(error);
         },
     });
+    //Alerta al guardar documento
+    document.getElementById('savedAlert').innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert"><b>Archivo guardado correctamente!</b><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 }
+
 function exportarJSON(){
+    var fecha = new Date();                 //Variable para crear un objsoneto fecha
+    var objson = new Object();              //Variable para crear un objsoneto con los atributos del JSON
 
-    var fecha = new Date();              //Variable para crear un objsoneto fecha
-    var objson = new Object();            //Variable para crear un objsoneto con los atributos del JSON
-
-    sContent = editor.html.get(); //Extrae el contenido del cuadro de texto en formato de texto plano
+    sContent = editor.html.get();           //Extrae el contenido del cuadro de texto en formato de texto plano
 
     objson._id = docu["_id"];
     objson.categoria = docu['categoria'];
@@ -130,5 +132,4 @@ function exportarJSON(){
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
     linkElement.click();
-
 }

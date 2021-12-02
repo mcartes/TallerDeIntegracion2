@@ -12,9 +12,9 @@ img.imagenNavbar{
 }
 #loginContainer, #registerContainer{
     display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 100px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
 }
 .main-section{
     margin:0 auto;
@@ -23,8 +23,7 @@ img.imagenNavbar{
     background-color: #fff;
     box-shadow: 0px 0px 20px #c1c1c1;
 }
-.fileinput-remove,
-.fileinput-upload{
+.fileinput-remove, .fileinput-upload{
     display: none;
 }
 #categorias.pre-scrollable {
@@ -32,10 +31,9 @@ img.imagenNavbar{
     overflow-y: scroll;
 }        
 #documentos.pre-scrollable {
-    max-height: 495px;
+    max-height: 480px;
     overflow-y: scroll;
 }     
-
 #drop_zone {
     border: 2px dashed #bbb;
     -moz-border-radius: 5px;

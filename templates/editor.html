@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Página</title>
+        <title>Editor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Descripción que sale en las búsquedas">
 
@@ -25,10 +25,10 @@
         <div class="container-fluid">
             <img class="imagenNavbar" src="{{url_for('static', filename='logoLeFroge.png')}}" alt="logoLeFroge.png">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link" style="color: white;">Inicio</a></li>
+                <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link bi bi-house-fill" style="color: white;"> Inicio</a></li>
 
                 <!-- Si el usuario está logueado, mandar al proyecto, si no está logueado mandar a loguearse -->
-                <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link" style="color: white;">Proyecto</a></li>
+                <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link bi bi-tools" style="color: white;"> Proyecto</a></li>
 
                 <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
                 {% if act == False %}
@@ -42,25 +42,38 @@
             <img class="imagenNavbar" src="{{url_for('static', filename='logoUniversidad.png')}}" alt="logoUniversidad.png">
         </div>
     </header>
+    <div id="savedAlert">
+        <!-- Aquí aparece una alerta al guardar un archivo -->
+    </div>
     <section>
         <div class="container-small d-flex bd-highlight">
             <div class="listaObjetos p-2 bd-highlight bg-light border rounded-3">
                 <div class="flex-shrink-0 p-3 bg-white">
                     <ul class="list-unstyled ps-0">
+                        <li><label class="form-label">
+                                <b>Nombre:</b>
+                                <small>{{ doc.nombredoc }}</small>
+                            </label>
+                        </li>
+                        <li><label class="form-label">
+                            <b>Categoría:</b>
+                            <small>{{ doc.categoria }}</small>
+                        </label>
+                    </li>
                         <li class="mb-1">
                             <button class="listaBotones btn btn-primary btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">Guardar y exportar <span class="bi bi-caret-down-fill"></span></button>
-                            <div class="collapse show" id="home-collapse">
+                            <div class="collapse" id="home-collapse">
                                 <ul class="listaBotones btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><button class="listaBotones btn btn-light border rounded-3 bi bi-download" onclick="guardar()"><a> Guardar</a></button></li>
+                                    <li><button class="listaBotones btn btn-light border rounded-3 bi bi-download" onclick="guardar()"><a> Guardar documento</a></button></li>
                                     <li><button class="listaBotones btn btn-light border rounded-3 bi bi-file-text-fill"" onclick="exportarJSON()"><a> Exportar JSON</a></button></li>
                                     <li><button class="listaBotones btn btn-light border rounded-3 bi bi-file-earmark-pdf-fill" onclick="DescargaPDF()"><a> Exportar PDF</a></button></li>
-                                    <li><button class="listaBotones btn btn-light border rounded-3 bi-file-medical" onclick=""><a> Exportar ODT</a></button></li>
+                                    <li><button class="listaBotones btn btn-light border rounded-3 bi-file-medical" onclick="" disabled><a> Exportar ODT</a></button></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="mb-1">
                             <button class="listaBotones btn btn-primary align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">Bloques de edición <span class="bi bi-caret-down-fill"></span></button>
-                            <div class="collapse show" id="dashboard-collapse">
+                            <div class="collapse" id="dashboard-collapse">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <!-- Bloques de edición -->
                                     <li>
@@ -104,14 +117,15 @@
             <!-- Columna 2 - Editor -->
             <div class="p-2 flex-grow-1 bd-highlight">
                 <div class="">
-                    <div id="froala-editor">
-                        
-                    </div>
+                    <div id="froala-editor"></div>
                 </div>
             </div>
         </div>        
     </section>
 </body>
+<footer class="pt-3 mt-4 text-muted border-top">
+    Le_Frogé - Universidad Católica de Temuco © 2021
+</footer>
 <script type="text/javascript" src="{{url_for('static', filename='js/editor.js')}}"></script>
 
 <!-- Boostrap -->
@@ -123,11 +137,9 @@
     docu = {{ doc | tojson }}
 </script>
 <script>
-    
-
+    //Sin estar acá no funciona
     function DescargaPDF() {
         var worker = html2pdf().from(editor.html.get()).save();
     }
-    
 </script>
 </html>
