@@ -106,7 +106,7 @@ function guardar(){
         },
     });
 }
-function pdf(){
+function exportarJSON(){
 
     var fecha = new Date();              //Variable para crear un objsoneto fecha
     var objson = new Object();            //Variable para crear un objsoneto con los atributos del JSON

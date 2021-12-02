@@ -1,6 +1,6 @@
 function exportaJSON(){
-    var fecha = new Date();              //Variable para crear un objsoneto fecha
-    var objson = new objsonect();            //Variable para crear un objsoneto con los atributos del JSON
+    var fecha = new Date();              //Variable para crear un objeto fecha
+    var objson = new objsonect();            //Variable para crear un objeto con los atributos del JSON
 
     sContent = editor.getPlainText(); //Extrae el contenido del cuadro de texto en formato de texto plano
 

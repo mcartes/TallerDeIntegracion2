@@ -4,9 +4,9 @@ img.imagenNavbar{
 }
 .arquetipo, .editBlock{
     border: solid 1px #CCC;
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(248, 249, 250);
     padding: 5px;
-    width: 300px;
+    width: 200px;
     border-radius: 5px;
     margin-top: 5px;
 }
@@ -23,4 +23,11 @@ img.imagenNavbar{
 }
 div.small{
     color: rgb(48, 48, 48);
+}
+.listaBotones{
+    margin-top: 5px;
+    width: 200px;
+}
+.listaObjetos{
+    margin-top: 10px;
 }
