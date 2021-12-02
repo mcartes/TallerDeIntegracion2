@@ -37,10 +37,10 @@ class PostForm(FlaskForm):
     title = StringField('Title')
     body = CKEditorField('Body', validators=[DataRequired()])
     submit = SubmitField('Submit')
-    
+
 @app.route("/")
-def start(): 
-    
+def start():
+
     return render_template("index.html")
 
 #Editor
@@ -68,7 +68,7 @@ def index():
 @app.route("/login")
 def login():
     return render_template("login.html")
-    
+
 @app.route('/authenticate', methods=['POST'])
 def Acceso():
     global Usuario
@@ -81,10 +81,10 @@ def Acceso():
         return redirect("/proyecto")
 
     elif(valid == 'BadUser' ):
-        return "<h1> Usuario No Existe </h1>"
-    
+        return "<h1> El Usuario No Existe ,<a href=/login>intentelo de nuevo</a></h1>"
+
     elif(valid == 'BadPass'):
-        return("Contraseña Incorrecta")
+        return "<h1> La Contraseña esta Incorrecta,<a href=/login>intentelo de nuevo</a></h1>"
 
 # Registro De Usuarios
 @app.route("/singup")
@@ -99,9 +99,9 @@ def Registro():
     if(password == password_confirm):
         return "<h1>"+PyM.Registro(user, password)+"</h1>"
     else:
-        return "<h1> La Contraseña no es igual </h1>"
+        return "<h1> Las Contraseñas no son iguales, <a href=/singup>intentelo de nuevo</a></h1></h1>"
 
-# Botones Muestra de Datos  
+# Botones Muestra de Datos
 @app.route('/titulo')
 def titulo():
     global Usuario
@@ -147,24 +147,24 @@ def ImportJson():
     PyM.Import(filename, Usuario, Colection)
     return redirect("/proyecto")
 
-#Consultas 
+#Consultas
 @app.route('/sii', methods=['POST'])
 def usuario():
     global Usuario
     global Colection
 
     con = request.form['consulta']
-    try: 
+    try:
         con = json.loads(con)
         GetConsulta = PyM.consultar(con, Usuario, Colection)
         return jsonify(GetConsulta)
 
     except:
         return "Consulta erronea. EJEMPLO: {'data': 'Value'}"
-    
+
 @app.route('/CrearA', methods=['POST'])
 def CrearA():
-    Cname = request.form['Cname'] 
+    Cname = request.form['Cname']
     Ccategoria = request.form['Ccategoria']
     return redirect('/editor')
 
@@ -203,12 +203,12 @@ def newdoc():
         doc['desc_categoria'] = Ncate[1]
         if(Ncate[0] == "Documents"):
             doc['desc_categoria'] = "Archivos sin categoria"
-            
+
     with open('./Save/new.json', 'w') as f:
         json.dump(doc, f)
-        
+
     idd = PyM.Import('new.json', Usuario, Colection)
-    
+
     return redirect(url_for("editor", cat=Ncate[0], doc=idd ))
 
 @app.route('/save', methods=['POST'])

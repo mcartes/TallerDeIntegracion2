@@ -10,22 +10,22 @@ def cat(Base):
                  'Ndocu':[],
                  'Total':[],
                  'docu': []}
-    
+
     for x in db.list_collection_names():
         if(db[x].count_documents({}) == 0):
             if(x != 'Documents'):db[x].drop()
-   
+
     for x in db.list_collection_names():
         contenido['cat'].append(x)
         contenido['Ndocu'].append(db[x].count_documents({}))
         xd = db[x].find_one()
         if(xd != None):
             contenido['desc'].append(xd['desc_categoria'])
-            for y in db[x].find(): 
-                contenido['docu'].append(y) 
+            for y in db[x].find():
+                contenido['docu'].append(y)
         else:
             contenido['desc'].append('Sin archivos...')
-            
+
     contenido['Total'].append(sum(contenido['Ndocu']))
     return contenido
 
@@ -51,16 +51,16 @@ def Import(Archivo, Base, Colec):
 
     with open(Archivo, encoding = 'utf8') as file:
         file_data = json.load(file)
-    
+
     file_data['_id'] = str(ObjectId())
     columna = db[file_data['categoria']]
 
     if isinstance(file_data, list):
-        columna.insert_many(file_data) 
+        columna.insert_many(file_data)
 
     else:
         columna.insert_one(file_data)
-    
+
     return file_data['_id']
 
 def Acceso(user, password):
@@ -78,9 +78,9 @@ def Acceso(user, password):
             return('BadPass')
     else:
         return('BadUser')
-     
 
-#Funcion para subir usuarios a MangoDB 
+
+#Funcion para subir usuarios a MangoDB
 def Registro(nombre, password):
     client = MongoClient('localhost')
     db = client['Registro']
@@ -88,7 +88,7 @@ def Registro(nombre, password):
 
     #Revisa si el usuario existe...
     if(columna.find_one({"name": nombre}) != None):
-        return("Usuario Existente...")
+        return("<h1>Usuario Existente,<a href=/singup>Vuelva a intentarlo Aqui</a></h1>")
 
     #Revisa si el correo existe...
     # elif(columna.find_one({"correo": correo}) != None):
@@ -102,7 +102,7 @@ def Registro(nombre, password):
         columna = db["Documents"]
         columna.insert_one({"_id":1, "Bienvenida": "Un gusto recibirte"})
         columna.delete_one({"_id":1})
-        return("Usuario Agregado")
+        return"<h1> Usuario agregado, <a href=/login>Presione aqui para iniciar seccion</a></h1></h1>"
 
 
 def consultar(con, Base, Colec):
@@ -118,7 +118,7 @@ def consultar(con, Base, Colec):
     # con = con.replace(" ","")
     # con = con.strip()
     # con = con.split(":")
-   
+
     #user = columna.find({con[0]:con[1]})
     user = columna.find(con)
 
@@ -135,7 +135,7 @@ def Titulo(Base, Colec):
             Array.append("TITULO: " + (y['titulo']))
             Array.append("SUBTITULO: " + (y['subtitulo']))
             Array.append("FECHA: " + (y['fecha']) + "<br>")
-            
+
     return list(Array)
 
 def Categoria(Base, Colec):
@@ -147,7 +147,7 @@ def Categoria(Base, Colec):
     for x in columna.find({}):
         Array.append("CATEGORIA: " + (x['categoria']))
         Array.append("DESC_CATEGORIA: " + (x['desc_categoria']) + "<br>")
-            
+
     return list(Array)
 
 def Parrafo(Base, Colec):
@@ -161,36 +161,36 @@ def Parrafo(Base, Colec):
             for a in y["desarrollo"]:
                 Array.append("TITULO: " + (a['titulo_parrafo']))
                 Array.append("PARRAFO: " + (a['parrafo']) + "<br>")
-            
+
     return list(Array)
 
 def editar(Base, Colec, doc):
     client = MongoClient('localhost')
     db = client[Base]
     columna = db[Colec]
-    
+
     x = columna.find_one({'_id': doc})
-    
+
     return x
 
 def guardar(Base, Colec, doc, contenido):
     client = MongoClient('localhost')
     db = client[Base]
     columna = db[Colec]
-    
+
     columna.update_one({'_id': doc}, {"$set": {'desarrollo': contenido}})
-    
+
     return 'Se ha guardado correctamente'
 
 def eliminar(Base, Colec, doc):
     client = MongoClient('localhost')
     db = client[Base]
     columna = db[Colec]
-    
+
     columna.delete_one({'_id': doc})
-    
+
     return 'Se ha eliminado correctamente'
-#Conexion con MongoDB       
+#Conexion con MongoDB
 #client = MongoClient('localhost')
 #ad = input("Ingrese: ")
 #consultar('PALEONTOLOGÍA', "6157bb5d19fc18bae9f6eab7", "Documents")
@@ -205,7 +205,7 @@ def eliminar(Base, Colec, doc):
 # #Coleccion de la base de datos
 #columna = db['astronomía']
 
-# Contador de documentos 
+# Contador de documentos
 #rint(columna.count_documents({}))
 
 #Export("6147d8897e7f3556a6b4d11d")
@@ -216,7 +216,7 @@ def eliminar(Base, Colec, doc):
 #x = columna.find_one({"name": "Xalo2312"},{})
 #print(x["_id"])
 
-#Creacion de Identificador 
+#Creacion de Identificador
 #str(ObjectId())
 
 #cat('61a6a47f3a7f11d36393d548')
