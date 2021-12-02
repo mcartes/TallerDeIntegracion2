@@ -58,8 +58,11 @@ def editor(cat, doc):
 @app.route("/proyecto")
 def index():
     global colections, Usuario
-    colections = PyM.cat(Usuario)
-    return render_template("proyecto.html", colections = colections)
+    if(Usuario != ""):
+        colections = PyM.cat(Usuario)
+        return render_template("proyecto.html", colections = colections)
+    else:
+        return redirect("/login")
 
 # Inicio de Sesion
 @app.route("/login")
@@ -78,7 +81,7 @@ def Acceso():
         return redirect("/proyecto")
 
     elif(valid == 'BadUser' ):
-        return("Usuario No Existe")
+        return "<h1> Usuario No Existe </h1>"
     
     elif(valid == 'BadPass'):
         return("Contraseña Incorrecta")
@@ -94,10 +97,9 @@ def Registro():
     password = request.form['password']
     password_confirm =  request.form['password_confirm']
     if(password == password_confirm):
-        PyM.Registro(user, password)
-        return "<h1> Usuario agregado <h1>"
+        return "<h1>"+PyM.Registro(user, password)+"</h1>"
     else:
-        return "<h1> La Contraseña no es igual <h1>"
+        return "<h1> La Contraseña no es igual </h1>"
 
 # Botones Muestra de Datos  
 @app.route('/titulo')
@@ -143,7 +145,6 @@ def ImportJson():
     # filename = 'sd.json'
     GetFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     PyM.Import(filename, Usuario, Colection)
-    flash('Contact Updated Successfully')
     return redirect("/proyecto")
 
 #Consultas 
@@ -170,11 +171,12 @@ def CrearA():
 @app.route('/coso', methods=['POST'])
 def coso():
     global Usuario
-    catselect = request.form['listGroupRadios'].split(',')
-
-    #catselect = PyM.editar(Usuario, catselect[1], catselect[0])
-    
-    return redirect(url_for("editor", cat=catselect[1], doc=catselect[0] ))
+    try:
+        catselect = request.form['listGroupRadios'].split(',')
+        #catselect = PyM.editar(Usuario, catselect[1], catselect[0])
+        return redirect(url_for("editor", cat=catselect[1], doc=catselect[0] ))
+    except:
+        return redirect("/proyecto")
 
 @app.route('/newdoc', methods=['POST'])
 def newdoc():

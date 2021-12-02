@@ -13,10 +13,11 @@
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
         <!-- Editor -->
+        <script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script> 
         <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script> 
+        
     </head>
 <body>
     <header class="navbar navbar-expand navbar-dark bg-dark d-flex justify-content-center py-3"><!-- justify-content-center -->
@@ -99,6 +100,7 @@
             </div>
         </div>
     </section>
+    <button class="w-100 btn btn-lg btn-primary" onclick= "pdf()"><a>Descargar JSON</a></button>
 </body>
 <script type="text/javascript" src="{{url_for('static', filename='js/editor.js')}}"></script>
 

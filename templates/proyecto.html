@@ -117,7 +117,7 @@
                                             <label class="list-group-item d-flex gap-2">
 
                                                 <span class="badge bg-danger d-flex align-items-center"><a href="/delete/{{docs._id}}/{{docs.categoria}}" class="btn" style="color: white;">Delete</a></span> 
-                                                <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value='{{docs._id}},{{docs.categoria}}'> 
+                                                <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value='{{docs._id}},{{docs.categoria}}' required> 
                                                 <span>{{docs.nombredoc}}
                                                     <small class="d-block text-muted"> Documentos de la categoría {{docs.categoria}}.</small>
 
@@ -152,9 +152,9 @@
                 <div class="form-floating">
                     {% for nameCat in colections.cat %}
                                             
-                        <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id='{{nameCat}}' value='{{nameCat}}|{{ colections.desc[loop.index -1]}}'> {{nameCat}} 
+                        <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id='{{nameCat}}' value='{{nameCat}}|{{ colections.desc[loop.index -1]}}' required> {{nameCat}} 
                     {% endfor %}
-                        <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id="new" value="Nuevo" > Nuevo
+                        <input class="form-check-input flex-shrink-0" type="radio" name='Ncate' onchange='valid()' id="new" value="Nuevo" required> Nuevo
                         
                 </div>
                 <div class="form-floating">

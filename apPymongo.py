@@ -88,7 +88,7 @@ def Registro(nombre, password):
 
     #Revisa si el usuario existe...
     if(columna.find_one({"name": nombre}) != None):
-        print("Usuario Existente...")
+        return("Usuario Existente...")
 
     #Revisa si el correo existe...
     # elif(columna.find_one({"correo": correo}) != None):
@@ -97,12 +97,12 @@ def Registro(nombre, password):
     #Añade al usuario
     else:
         a = columna.insert_one({"_id":str(ObjectId()),"name": nombre, "contra": password})
-        print("Agregado Correctamente el Usuario: ", nombre)
         dou = columna.find_one({"name": nombre})
         db = client[dou["_id"]]
         columna = db["Documents"]
         columna.insert_one({"_id":1, "Bienvenida": "Un gusto recibirte"})
         columna.delete_one({"_id":1})
+        return("Usuario Agregado")
 
 
 def consultar(con, Base, Colec):

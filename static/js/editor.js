@@ -106,3 +106,29 @@ function guardar(){
         },
     });
 }
+function pdf(){
+
+    var fecha = new Date();              //Variable para crear un objsoneto fecha
+    var objson = new Object();            //Variable para crear un objsoneto con los atributos del JSON
+
+    sContent = editor.html.get(); //Extrae el contenido del cuadro de texto en formato de texto plano
+
+    objson._id = docu["_id"];
+    objson.categoria = docu['categoria'];
+    objson.fecha = fecha.getFullYear()+'-'+ (fecha.getMonth()+1)+'-'  + fecha.getDate();
+    objson.desc_categoria = docu['desc_categoria'];
+    objson.desarrollo = sContent;
+
+    var jsonString= JSON.stringify(objson); //Convierte el objeto a un string de json
+
+    //Configuracion de encoding para la exportacion
+    dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(jsonString);
+    exportFileDefaultName = docu['nombredoc']+'.json';
+
+    //Crea un elemento de tipo a, para exportar el archivo
+    linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+
+}

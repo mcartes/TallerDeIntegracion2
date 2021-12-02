@@ -12,15 +12,15 @@
                 <img class="mb-4" src="{{url_for('static', filename='logoLeFroge.png')}}" alt="logo_pagina" width="auto" height="110px">
                 <h1 class="h3 mb-3 fw-normal">Registrarse</h1>
                 <div class="form-floating">
-                    <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Usuario">
+                    <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Usuario" required>
                     <label for="floatingInput">Usuario</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña" required>
                     <label for="floatingPassword">Contraseña</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" name="password_confirm" class="form-control" id="floatingPassword" placeholder="Contraseña">
+                    <input type="password" name="password_confirm" class="form-control" id="floatingPassword" placeholder="Contraseña" required>
                     <label for="floatingPassword">Repetir contraseña</label>
                 </div><br>
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
