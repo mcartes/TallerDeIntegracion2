@@ -46,6 +46,8 @@ function handleDragLeave(e) {
     list.innerHTML = '';
 }
 
+
+
 var dropZone = document.getElementById('drop_zone'),
     list = document.getElementById('list'),
     p = document.getElementById('info').children[0];
@@ -54,4 +56,3 @@ dropZone.addEventListener('dragenter', handleDragEnter, false);
 dropZone.addEventListener('dragover', handleDragOver, false);
 dropZone.addEventListener('dragleave', handleDragLeave, false);
 dropZone.addEventListener('drop', handleDrop, false);
-

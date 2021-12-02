@@ -72,7 +72,7 @@
                                 
                             </div> 
                         </form>
-
+                        <!--categorias-->
                         <label for="exampleFormControlTextarea1" class="form-label">Categorías</label>
                         <form ansubmit="/coso" method="post">
                             <div id="categorias" class="list-group mx-0 pre-scrollable">
@@ -80,7 +80,7 @@
                                     <li class="list-unstyled">
                                         <label class="list-group-item d-flex gap-2">
                                             <span class="badge rounded bg-primary d-flex align-items-center">{{ colections.Total[0] }}</span>    
-                                            <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="True">
+                                            <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="True" onclick="btn_('all')">
                                                 <span>Todos
                                                     <small class="d-block text-muted">Muestra todos los documentos del usuario que poseen y no poseen categoría.</small>
                                                 </span>
@@ -92,14 +92,14 @@
                                         <li class="list-unstyled">
                                             <label class="list-group-item d-flex gap-2">
                                                 <span class="badge rounded bg-primary d-flex align-items-center">{{ colections.Ndocu[loop.index -1] }}</span>  
-                                                <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{nameCat}}> 
+                                                <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value={{nameCat}} onclick="btn_('{{nameCat}}')"> 
                                                 <span>{{nameCat}}
                                                     <small class="d-block text-muted">{{ colections.desc[loop.index -1] }}.</small>
                                                 </span>
                                             </label>
-                                        
+                                        </li>    
                                     {% endfor %}
-                                    </li>
+                                    
                                 </ul>
                             </div>   
                         </form>
@@ -111,20 +111,23 @@
                             <div id="documentos" class="list-group mx-0 pre-scrollable">
                                 <ul class="list-group">
                                     
-                                    {% for docs in colections.docu %}
-                                            
-                                    <li class="list-unstyled">
-                                        <label class="list-group-item d-flex gap-2">
-                                            
-                                            <span class="badge bg-danger d-flex align-items-center"><a href="/delete/{{docs._id}}/{{docs.categoria}}" class="btn" style="color: white;">Delete</a></span> 
-                                            <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value='{{docs._id}},{{docs.categoria}}'> 
-                                            <span>{{docs.nombredoc}}
-                                                <small class="d-block text-muted"> Documentos de la categoría {{docs.categoria}}.</small>
-                                                
-                                            </span>
-                                        </label>
+                                    {% for docs in colections.docu %}                                            
+                                    <div class='{{docs.categoria+"_"}}'>
+                                        <li class="list-unstyled">
+                                            <label class="list-group-item d-flex gap-2">
+
+                                                <span class="badge bg-danger d-flex align-items-center"><a href="/delete/{{docs._id}}/{{docs.categoria}}" class="btn" style="color: white;">Delete</a></span> 
+                                                <input class="form-check-input flex-shrink-0" type="radio" name='listGroupRadios' id="listGroupRadios1" value='{{docs._id}},{{docs.categoria}}'> 
+                                                <span>{{docs.nombredoc}}
+                                                    <small class="d-block text-muted"> Documentos de la categoría {{docs.categoria}}.</small>
+
+                                                </span>
+                                            </label>
+                                        
+                                        </li>
+                                    </div>
                                     {% endfor %}
-                                    </li><br>
+                                    <br>
                                     <div class="mb-3 d-grid gap-1 mx-auto">
                                         <button type="submit" class="btn btn-primary">Editar Documento</button>
                                     </div>
@@ -205,5 +208,36 @@
             return filename.replace('(', '_').replace(']', '_');
         }
     });
+    
+    function btn_(cate){
+      
+        var contrito = {{colections | tojson}}
+        if(cate == "all"){
+            for (let i = 0; i < contrito["cat"].length; i++) {
+                var catr = document.getElementsByClassName(contrito["cat"][i]+"_")
+                for(var j = 0; j < catr.length; j++){
+                        catr[j].style.display = 'block'
+                    }
+            }
+        }else{
+            for (let i = 0; i < contrito["cat"].length; i++) {
+                var catr = document.getElementsByClassName(contrito["cat"][i]+"_")
+
+                if(cate == contrito["cat"][i]){
+                    for(var j = 0; j < catr.length; j++){
+                        catr[j].style.display = 'block'
+                    }
+                }
+                else{
+                    for(var j = 0; j < catr.length; j++){
+                        catr[j].style.display = 'none'
+                    }
+                }
+
+            }
+        }   
+    };
+
+    /** $("#div1").css("display", "block");*/
 </script>
 </html>
