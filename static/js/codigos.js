@@ -22,4 +22,7 @@ function exportaJSON(){
     linkElement.click();
 
     editor.insertHTML('<b>Que pasa chavales todo bien todo correcto</b>')
-  }
+}
+function DescargaPDF() {
+    editor.execCommand("html2pdf");
+}
