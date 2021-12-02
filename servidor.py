@@ -180,7 +180,7 @@ def coso():
 def newdoc():
     global Usuario
     doc = {
-    "_id": "1314",
+    "_id": "",
     "categoria": "",
 	"fecha": date.today().isoformat(),
     "desc_categoria": "",
@@ -194,6 +194,7 @@ def newdoc():
         newcat = request.form['newcat']
         desc_newcat = request.form['desc_newcat']
         doc['categoria'] = newcat
+        Ncate[0] = newcat
         doc['desc_categoria'] = desc_newcat
     else:
         doc['categoria'] = Ncate[0]
@@ -204,9 +205,9 @@ def newdoc():
     with open('./Save/new.json', 'w') as f:
         json.dump(doc, f)
         
-    id = PyM.Import('new.json', Usuario, Colection)
+    idd = PyM.Import('new.json', Usuario, Colection)
     
-    return redirect(url_for("editor", cat=Ncate[0], doc=id ))
+    return redirect(url_for("editor", cat=Ncate[0], doc=idd ))
 
 @app.route('/save', methods=['POST'])
 def save():
