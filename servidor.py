@@ -218,5 +218,12 @@ def save():
 
     return PyM.guardar(Usuario, cat, doc, datos)
 
+@app.route('/delete/<doc>/<cat>')
+def delete(doc, cat):
+    global Usuario
+
+    PyM.eliminar(Usuario, cat, doc)
+    return redirect("/proyecto")
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

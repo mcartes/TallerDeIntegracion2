@@ -181,6 +181,15 @@ def guardar(Base, Colec, doc, contenido):
     columna.update_one({'_id': doc}, {"$set": {'desarrollo': contenido}})
     
     return 'Se ha guardado correctamente'
+
+def eliminar(Base, Colec, doc):
+    client = MongoClient('localhost')
+    db = client[Base]
+    columna = db[Colec]
+    
+    columna.delete_one({'_id': doc})
+    
+    return 'Se ha eliminado correctamente'
 #Conexion con MongoDB       
 #client = MongoClient('localhost')
 #ad = input("Ingrese: ")
