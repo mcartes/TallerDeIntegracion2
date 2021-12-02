@@ -26,15 +26,15 @@
             <img class="imagenNavbar" src="{{url_for('static', filename='logoLeFroge.png')}}" alt="logoLeFroge.png">
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link bi bi-house-fill" style="color: white;"> Inicio</a></li>
-
+    
                 <!-- Si el usuario está logueado, mandar al proyecto, si no está logueado mandar a loguearse -->
                 <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link bi bi-tools" style="color: white;"> Proyecto</a></li>
 
                 <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
                 {% if act == False %}
-                        <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
+                        <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link bi bi-person-check-fill" style="color: white;"> Iniciar Sesión</a></li>
                 {% else %}
-                        <li class="nav-item"><a href="http://127.0.0.1:5000/deslogin" class="nav-link" style="color: white;">Cerrar Sesión</a></li>
+                        <li class="nav-item"><a href="http://127.0.0.1:5000/deslogin" class="nav-link bi bi-person-dash-fill" style="color: white;"> Cerrar Sesión</a></li>
                 {% endif %}
                 
                 <li class="nav-item"><a href="https://github.com/mcartes/TallerdeIntegracion2.git" class="nav-link bi bi-github" style="color: white;"> Repositorio</a></li>
@@ -80,10 +80,16 @@
                                         <div id="drag-block-1" class="editBlock" draggable="true">Bloque de código.</div>
                                     </li>
                                     <li>
-                                        <div id="drag-block-2" class="editBlock" draggable="true">Encabezado H3</div>
+                                        <div id="drag-block-2" class="editBlock" draggable="true">Encabezado H3.</div>
                                     </li>
                                     <li>
                                         <div id="drag-block-3" class="editBlock" draggable="true">Párrafo simple.</div>
+                                    </li>
+                                    <li>
+                                        <div id="drag-block-4" class="editBlock" draggable="true">Lista Numerica.</div>
+                                    </li>
+                                    <li>
+                                        <div id="drag-block-5" class="editBlock" draggable="true">Lista De Puntos.</div>
                                     </li>
                                 </ul>
                             </div>

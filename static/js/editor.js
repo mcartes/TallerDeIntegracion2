@@ -8,6 +8,8 @@ var dragCallback = function (e) {
 document.querySelector('#drag-block-1').addEventListener('dragstart', dragCallback);
 document.querySelector('#drag-block-2').addEventListener('dragstart', dragCallback);
 document.querySelector('#drag-block-3').addEventListener('dragstart', dragCallback);
+document.querySelector('#drag-block-4').addEventListener('dragstart', dragCallback);
+document.querySelector('#drag-block-5').addEventListener('dragstart', dragCallback);
 
 //Arquetipos
 document.querySelector('#drag-arquetipo-1').addEventListener('dragstart', dragCallback);
@@ -47,6 +49,14 @@ heightMin: 499,
 
                 if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-block-3'){
                     editor.html.insert('<p>Párrafo a editar</p>');
+                }
+                
+                if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-block-4'){
+                    editor.html.insert("<ol><li>Lista 1</li><li>Lista 2</li><li>Lista 3</li><li>Lista 4</li></ol>");
+                }
+                
+                if (dropEvent.originalEvent.dataTransfer.getData('Text') == 'drag-block-5'){
+                    editor.html.insert("<ul><li>Lista 1</li><li>Lista 2</li><li>Lista 3</li><li>Lista 4</li></ul>");
                 }
                 
                 //Insertar arquetipos

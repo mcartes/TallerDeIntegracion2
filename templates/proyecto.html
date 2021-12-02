@@ -18,17 +18,17 @@
         <div class="container-fluid">
             <img class="imagenNavbar" src="{{url_for('static', filename='logoLeFroge.png')}}" alt="logoLeFroge.png">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link" style="color: white;">Inicio</a></li>
-
+                <li class="nav-item"><a href="http://127.0.0.1:5000/" class="nav-link bi bi-house-fill" style="color: white;"> Inicio</a></li>
+    
                 <!-- Si el usuario está logueado, mandar al proyecto, si no está logueado mandar a loguearse -->
-                <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link" style="color: white;">Proyecto</a></li>
+                <li class="nav-item"><a href="http://127.0.0.1:5000/proyecto" class="nav-link bi bi-tools" style="color: white;"> Proyecto</a></li>
 
                 <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
                 {% if act == True %}
-                    <li class="nav-item"><a href="http://127.0.0.1:5000/deslogin" class="nav-link" style="color: white;">Cerrar Sesión</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/deslogin" class="nav-link bi bi-person-dash-fill" style="color: white;"> Cerrar Sesión</a></li>
                         
                 {% else %}
-                    <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link" style="color: white;">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link bi bi-person-check-fill" style="color: white;"> Iniciar Sesión</a></li>
                 {% endif %}
                 
                 <li class="nav-item"><a href="https://github.com/mcartes/TallerdeIntegracion2.git" class="nav-link bi bi-github" style="color: white;"> Repositorio</a></li>
@@ -40,11 +40,6 @@
                         </form>
                     </div>
                 </li>
-<<<<<<< Updated upstream
-=======
-                <!-- Si el usario está logueado, mostrar Cerrar Sesión, si no está logueado mostrar Iniciar Sesión -->
-                <li class="nav-item"><a href="http://127.0.0.1:5000/login" class="nav-link bi bi-person-check-fill" style="color: white;"> Iniciar Sesión</a></li>
->>>>>>> Stashed changes
             </ul>
             <img class="imagenNavbar" src="{{url_for('static', filename='logoUniversidad.png')}}" alt="logoUniversidad.png">
         </div>
@@ -58,37 +53,6 @@
         <div class="container-md">
             <div class="container">
                 <div class="row">
-<<<<<<< Updated upstream
-                    <div class="col align-self-start">
-                        <!-- <div class="container-fluid">
-                            <form class="d-flex d-grid gap-2 mx-auto" action="/sii" method="post">
-                                <input class="form-control me-2" type="search" placeholder="Escriba una consulta..." aria-label="Search" name="consulta"/>
-                                <button class="btn btn-success" type="submit">Consultar</button>
-                            </form>
-                        </div> -->
-                     
-                        <form class="" action="/subir" method="post" enctype="multipart/form-data">
-                            <!-- Drag and Drop -->
-                            <div class="form-group">
-                                <label for="formFile" class="form-label">Seleccione uno o varios archivos</label>
-                                <!-- <div class="pre-scrollable">
-                                    <div class="mb-3 d-grid gap-1 mx-auto file-loading">
-                                        <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" name="archivosubido">
-                                    </div><br>
-                                </div> -->
-                                <div id="drop_zone">
-                                    <div class="mb-3 d-grid gap-1 mx-auto">
-                                        <input id="file-1" class="form-control" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" name="archivosubido" required>
-                                    </div>
-                                </div>
-                                <div id="info" class="pre-scrollable">
-
-                                        <p></p>
-                                        <ul id="list"></ul>
-                                    
-                                </div>
-                                
-=======
                     <div class="col bg-light border rounded">
                         <form action="/subir" method="post" enctype="multipart/form-data">
                             <!-- Drag and Drop -->
@@ -98,7 +62,6 @@
                                     <input id="file-1" class="form-control" type="file" name="archivosubido" multiple>
                                     <small class="text-muted"><b>Nota: Puede arrastrar archivos sobre el selector</b></small>
                                 </div>
->>>>>>> Stashed changes
                                 <div class="mb-3 d-grid gap-1 mx-auto">
                                     <button type="submit" class="btn btn-primary">Subir archivo</button>
                                 </div>

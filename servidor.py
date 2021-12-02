@@ -151,11 +151,13 @@ def ImportJson():
     global Usuario
     global Colection
 
-    GetFile = request.files["archivosubido"]
-    filename = secure_filename(GetFile.filename)
-    # filename = 'sd.json'
-    GetFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    PyM.Import(filename, Usuario, Colection)
+    GetFile =  request.files.getlist("archivosubido")
+    
+    for file in GetFile:
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        PyM.Import(filename, Usuario, Colection)
+        
     return redirect("/proyecto")
 
 #Consultas
