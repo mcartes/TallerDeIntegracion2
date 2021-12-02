@@ -90,11 +90,6 @@ def Registro(nombre, password):
     if(columna.find_one({"name": nombre}) != None):
         return("<h1>Usuario Existente,<a href=/singup>Vuelva a intentarlo Aqui</a></h1>")
 
-    #Revisa si el correo existe...
-    # elif(columna.find_one({"correo": correo}) != None):
-    #     print("Correo Existente...")
-
-    #Añade al usuario
     else:
         a = columna.insert_one({"_id":str(ObjectId()),"name": nombre, "contra": password})
         dou = columna.find_one({"name": nombre})
@@ -110,62 +105,11 @@ def consultar(con, Base, Colec):
     db = client[Base]
     user = {"datos": []}
     for x in range(len(Colec)):
-       
-        # con = con.replace("'","")
-        # con = con.replace('"',"")
-        # con = con.replace("","")
-        # con = con.replace("{","")
-        # con = con.replace("}","")
-        # con = con.replace(" ","")
-        # con = con.strip()
-        # con = con.split(":")
-    
-        #user = columna.find({con[0]:con[1]})
         for y in db[Colec[x]].find(con):
             user["datos"].append(y)
            
-
     return list(user["datos"])
 
-def Titulo(Base, Colec):
-    client = MongoClient('localhost')
-    db = client[Base]
-    columna = db[Colec]
-    Array = []
-
-    for x in columna.find({}):
-        for y in x['documentos']:
-            Array.append("TITULO: " + (y['titulo']))
-            Array.append("SUBTITULO: " + (y['subtitulo']))
-            Array.append("FECHA: " + (y['fecha']) + "<br>")
-
-    return list(Array)
-
-def Categoria(Base, Colec):
-    client = MongoClient('localhost')
-    db = client[Base]
-    columna = db[Colec]
-    Array = []
-
-    for x in columna.find({}):
-        Array.append("CATEGORIA: " + (x['categoria']))
-        Array.append("DESC_CATEGORIA: " + (x['desc_categoria']) + "<br>")
-
-    return list(Array)
-
-def Parrafo(Base, Colec):
-    client = MongoClient('localhost')
-    db = client[Base]
-    columna = db[Colec]
-    Array = []
-
-    for x in columna.find({}):
-        for y in x['documentos']:
-            for a in y["desarrollo"]:
-                Array.append("TITULO: " + (a['titulo_parrafo']))
-                Array.append("PARRAFO: " + (a['parrafo']) + "<br>")
-
-    return list(Array)
 
 def editar(Base, Colec, doc):
     client = MongoClient('localhost')
@@ -193,36 +137,7 @@ def eliminar(Base, Colec, doc):
     columna.delete_one({'_id': doc})
 
     return 'Se ha eliminado correctamente'
-#Conexion con MongoDB
-#client = MongoClient('localhost')
-#ad = input("Ingrese: ")
-#consultar('PALEONTOLOGÍA', "6157bb5d19fc18bae9f6eab7", "Documents")
 
-#Bdato("6157bb5d19fc18bae9f6eab7","Documents")
-
-# #Base de datos
-#db = client['61a6a47f3a7f11d36393d548']
-
-
-
-# #Coleccion de la base de datos
-#columna = db['astronomía']
-
-# Contador de documentos
-#rint(columna.count_documents({}))
-
-#Export("6147d8897e7f3556a6b4d11d")
-#Import("JsonSimple2.json", "617892c28f62b61c3236cd6b", "Documents")
-
-#Up(columna, "Ññ", "Jfdnsom", "wastv")
-# Devolver $Oid
-#x = columna.find_one({"name": "Xalo2312"},{})
-#print(x["_id"])
-
-#Creacion de Identificador
-#str(ObjectId())
-
-#cat('61a6a47f3a7f11d36393d548')
 
 
 

@@ -126,6 +126,7 @@ function exportarJSON(){
     sContent = editor.html.get();           //Extrae el contenido del cuadro de texto en formato de texto plano
 
     objson._id = docu["_id"];
+    objson.nombredoc = docu["nombredoc"];
     objson.categoria = docu['categoria'];
     objson.fecha = fecha.getFullYear()+'-'+ (fecha.getMonth()+1)+'-'  + fecha.getDate();
     objson.desc_categoria = docu['desc_categoria'];

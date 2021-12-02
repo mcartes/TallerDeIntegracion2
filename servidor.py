@@ -1,12 +1,8 @@
-from flask import Flask, render_template, request, redirect, jsonify, flash, url_for
+from flask import Flask, render_template, request, redirect, jsonify, url_for
 import apPymongo as PyM
 from werkzeug.utils import secure_filename
 import json
 import os
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
-from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 
 Usuario = ""
@@ -21,23 +17,9 @@ app = Flask(__name__)
 #Guardar Archivos
 app.config['UPLOAD_FOLDER'] = './Save'
 
-
-#CKEditor
-app.config['CKEDITOR_SERVE_LOCAL'] = True
-app.config['CKEDITOR_HEIGHT'] = 400
-app.secret_key = 'secret string'
-ckeditor = CKEditor(app)
-app.config['CKEDITOR_PKG_TYPE'] = 'custom'
-#app.config['CKEDITOR_EXTRA_PLUGINS'] = ['exportpdf', 'format']
-
-
 app.config['JSON_AS_ASCII'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
-class PostForm(FlaskForm):
-    title = StringField('Title')
-    body = CKEditorField('Body', validators=[DataRequired()])
-    submit = SubmitField('Submit')
 
 @app.route("/")
 def start(): 
@@ -48,10 +30,6 @@ def start():
 @app.route("/editor/<cat>/<doc>")
 def editor(cat, doc):
     global Usuario, Colection, act
-    #si = {}
-    #form = PostForm()
-    #xd = PyM.consultar(si, Usuario, Colection)
-    #return render_template("editor.html", form = form, xd=xd)
     documento = PyM.editar(Usuario, cat, doc)
     return render_template("editor.html", doc = documento, act = act)
 
@@ -112,40 +90,6 @@ def Registro():
     else:
         return "<h1> Las Contraseñas no son iguales, <a href=/singup>intentelo de nuevo</a></h1></h1>"
 
-# Botones Muestra de Datos
-@app.route('/titulo')
-def titulo():
-    global Usuario
-    global Colection
-
-    GetTitulo = PyM.Titulo(Usuario, Colection)
-    a = ""
-    for x in GetTitulo:
-        a = a + x + '<br>'
-    return a
-
-@app.route('/categoria')
-def categoria():
-    global Usuario
-    global Colection
-
-    GetCategoria = PyM.Categoria(Usuario, Colection)
-    a = ""
-    for x in GetCategoria:
-        a = a + x + '<br>'
-    return a
-
-@app.route('/parrafos')
-def parrafos():
-    global Usuario
-    global Colection
-
-    GetParrafo = PyM.Parrafo(Usuario, Colection)
-    a = ""
-    for x in GetParrafo:
-        a = a + x + '<br>'
-    return a
-
 @app.route('/subir', methods=['POST'])
 def ImportJson():
     global Usuario
@@ -173,12 +117,6 @@ def usuario():
 
     except:
        return "Consulta erronea. EJEMPLO: {'data': 'Value'}"
-    
-@app.route('/CrearA', methods=['POST'])
-def CrearA():
-    Cname = request.form['Cname']
-    Ccategoria = request.form['Ccategoria']
-    return redirect('/editor')
 
 @app.route('/coso', methods=['POST'])
 def coso():
