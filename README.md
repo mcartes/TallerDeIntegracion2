@@ -25,11 +25,11 @@ Una vez iniciado podrá ver sus proyectos.
 ![imagen](https://user-images.githubusercontent.com/44407924/147611807-7b6c147a-7b94-4fa2-b009-c3e1e606efbe.png)
 Así mismo como editarlos de una manera cómoda y amigable para el usuario y guardarlos en diversos formatos!.
 ![imagen](https://user-images.githubusercontent.com/44407924/147611894-89037b08-a88d-4394-a855-1067cdf0f626.png)
-## Autores ✒️
-**Daniel Fernando Araya Carmona**
-**Luis Felipe José Ortega Curillán**
-**Ignacio Alejandro Jesús Ortiz Ortiz**
-**Francisco Javier Fuentealba Peña**
-Supervisado por: 
-**Maximiliano Nicolás Cartes Neira**
+### Autores ✒️
+* **Daniel Fernando Araya Carmona**
+* **Luis Felipe José Ortega Curillán**
+* **Ignacio Alejandro Jesús Ortiz Ortiz**
+* **Francisco Javier Fuentealba Peña**
+## Supervisado por: 
+* **Maximiliano Nicolás Cartes Neira**
 
