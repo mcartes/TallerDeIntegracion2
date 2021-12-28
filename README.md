@@ -14,7 +14,7 @@ Ejecutamos mongod.exe (generalmente se encuentra en el directorio C:\Program Fil
 cd C:\Program Files\MongoDB\Server\5.0\bin
 mongod
 ```
-Luego inicializamos nuestro proyecto ejecutando el archivo servidor.py 
+Luego inicializamos nuestro proyecto ejecutando el archivo **servidor.py**
 ## Una vez completado todo ✅
 Se podrá ver el inicio correctamente en el servidor local http://127.0.0.1:5000/
 ![imagen](https://user-images.githubusercontent.com/44407924/147611389-9f0958a2-7a2d-45b2-a737-546adec27694.png)
