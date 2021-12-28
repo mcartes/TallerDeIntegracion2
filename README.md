@@ -1,5 +1,5 @@
 # LeFrogé
-Es un proyecto web donde se crea un entorno digital estructurado en base al proceso científico para crear, escribir, editar, guardar y exportar artículos científicos. Creado por 
+Es un proyecto web donde se crea un entorno digital estructurado en base al proceso científico para crear, escribir, editar, guardar y exportar artículos científicos. 
 ## Pre-requisitos 🔧
 ```
 Instalar MongoDB e inicializar el servicio MongoD (de ser necesario)
