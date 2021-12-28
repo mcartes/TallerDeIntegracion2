@@ -1,6 +1,6 @@
 # LeFrogé
 Es un proyecto web donde se crea un entorno digital estructurado en base al proceso científico para crear, escribir, editar, guardar y exportar artículos científicos. Creado por 
-### Pre-requisitos 🔧
+## Pre-requisitos 🔧
 ```
 Instalar MongoDB e inicializar el servicio MongoD (de ser necesario)
 ```
@@ -8,14 +8,14 @@ Luego de esto, mediante el sistema de gestión de paquetes "pip" instalaremos la
 ```
 pip install pymongo flask werkzeug bson
 ```
-### Iniciando el Programa📖
+## Iniciando el Programa📖
 Ejecutamos mongod.exe (generalmente se encuentra en el directorio C:\Program Files\MongoDB\Server\5.0\bin) o también en la consola de comandos copiamos las 2 lineas de código (reemplazando por la versión que tenga instalada)
 ```
 cd C:\Program Files\MongoDB\Server\5.0\bin
 mongod
 ```
 Luego inicializamos nuestro proyecto ejecutando el archivo servidor.py 
-### Una vez completado todo ✅
+## Una vez completado todo ✅
 Se podrá ver el inicio correctamente en el servidor local http://127.0.0.1:5000/
 ![imagen](https://user-images.githubusercontent.com/44407924/147611389-9f0958a2-7a2d-45b2-a737-546adec27694.png)
 ### Donde:
@@ -25,11 +25,11 @@ Una vez iniciado podrá ver sus proyectos.
 ![imagen](https://user-images.githubusercontent.com/44407924/147611807-7b6c147a-7b94-4fa2-b009-c3e1e606efbe.png)
 Así mismo como editarlos de una manera cómoda y amigable para el usuario y guardarlos en diversos formatos!.
 ![imagen](https://user-images.githubusercontent.com/44407924/147611894-89037b08-a88d-4394-a855-1067cdf0f626.png)
-### Autores ✒️
+## Autores ✒️
 * **Daniel Fernando Araya Carmona**
 * **Luis Felipe José Ortega Curillán**
 * **Ignacio Alejandro Jesús Ortiz Ortiz**
 * **Francisco Javier Fuentealba Peña**
-## Supervisado por: 
+### Supervisado por: 
 * **Maximiliano Nicolás Cartes Neira**
 
