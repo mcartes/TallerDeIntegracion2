@@ -39,6 +39,31 @@ Una vez iniciado podrá ver sus proyectos.
 ![imagen](https://user-images.githubusercontent.com/44407924/147611807-7b6c147a-7b94-4fa2-b009-c3e1e606efbe.png)
 Así mismo como editarlos de una manera cómoda y amigable para el usuario y guardarlos en diversos formatos!.
 ![imagen](https://user-images.githubusercontent.com/44407924/147611894-89037b08-a88d-4394-a855-1067cdf0f626.png)
+## Para editar ✍🏻
+Una vez ya descargado y completado los pasos para instalar, se podrá entrar en el ambiente de programación, por lo que le daremos clic derecho a la carpeta contenedora del proyecto y seleccionamos "Abrir con Code"
+
+![imagen](https://user-images.githubusercontent.com/44407924/148456488-94ef57f0-574f-4d19-8581-477b88a3bf96.png)
+
+Una vez abierto se podrá instalar la extensión de python para Visual studio code (opcional)
+![imagen](https://user-images.githubusercontent.com/44407924/148456786-27c75e59-9cfe-4425-b99f-2270553566cf.png)
+
+Ya en la vista de las carpetas con los archivos, podremos elegir si queremos personalizar el frontend o el backend.
+### Para el Frontend
+- Se encontrará la carpeta "static" que es la contendrá los archivos css, Javascript y las imágenes.
+
+![imagen](https://user-images.githubusercontent.com/44407924/148457175-25642b3d-d223-4e1b-83c6-ca0a172e0e81.png)
+- Se encontrará la carpeta "templates", en la cual se encontrarán todos los archivos html. Es probable que en algunas carpetas aparezcan errores, como los que se ven en la imagen de abajo, pero esto se debe a que Visual studio code al no reconocer algunas funcionalidades de Flask las marca como errores, sin embargo no afecta nada a su funcionalidad correcta.
+
+![imagen](https://user-images.githubusercontent.com/44407924/148457583-ee7eb192-fcbe-4f69-91cd-64f8f161a08b.png)
+
+### Para el Backend
+- Se encontrará "Servidor.py" el cual contendrá las rutas y será el que mantenga funcionando el servidor
+ ![imagen](https://user-images.githubusercontent.com/44407924/148458067-0220d01c-2d11-4d96-ab1f-ab7da4c87002.png)
+- apPymongo.py el cual será el encargado de comunicar mongodb con python.
+ ![imagen](https://user-images.githubusercontent.com/44407924/148458259-0ff0fe91-68b1-4ddc-9922-bcc404dd2f66.png)
+
+
+
 ## Autores ✒️
 * **Daniel Fernando Araya Carmona**
 * **Luis Felipe José Ortega Curillán**
