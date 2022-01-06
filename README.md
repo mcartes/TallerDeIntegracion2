@@ -21,7 +21,7 @@ o también en la consola de comandos copiamos las 2 lineas de código (reemplaza
 cd C:\Program Files\MongoDB\Server\5.0\bin
 mongod
 ```
-Luego, vamos a la carpeta contenedora de nuestro proyecto y ejecutamos el archivo **servidor.py**
+Finalmente, vamos a la carpeta contenedora de nuestro proyecto y ejecutamos el archivo **servidor.py**
 
 ![imagen](https://user-images.githubusercontent.com/44407924/148455176-3c617101-0287-4874-8df8-1d6de5d59bb8.png)
 
