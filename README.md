@@ -1,20 +1,34 @@
 # LeFrogé
 Es un proyecto web donde se crea un entorno digital estructurado en base al proceso científico para crear, escribir, editar, guardar y exportar artículos científicos. 
 ## Pre-requisitos 🔧
-```
-Instalar MongoDB e inicializar el servicio MongoD (de ser necesario)
-```
-Luego de esto, mediante el sistema de gestión de paquetes "pip" instalaremos las librerías de python necesarias para ejecutar el proyecto
+Antes de iniciar, Es necesario tener instalado
+- Python versión 3.x (Para el desarrollo se utilizó la versión 3.9) https://www.python.org/downloads/
+- MongoDB localmente (https://www.mongodb.com/try/download/community)
+- Editor de texto de preferencia. Para el proyecto se utilizó "Visual studio code" (https://code.visualstudio.com/download)
+## Pasos Para instalar el programa 🛠
+
+Ya instalados los Pre-requisitos, mediante el sistema de gestión de paquetes "pip", que generalmente viene por defecto en la instalación de Python instalaremos las librerías de python necesarias para ejecutar el proyecto, por lo que es necesario abrir la terminal, (Símbolo del sistema en windows) y ejecutaremos el siguiente comando:
 ```
 pip install pymongo flask werkzeug bson
 ```
 ## Iniciando el Programa📖
-Ejecutamos mongod.exe (generalmente se encuentra en el directorio C:\Program Files\MongoDB\Server\5.0\bin) o también en la consola de comandos copiamos las 2 lineas de código (reemplazando por la versión que tenga instalada)
+Lo primero que se necesita es dirigirse a la carpeta donde instalamos el MongoDB y ejecutamos el archivo llamado "mongod.exe" (generalmente se encuentra en el directorio C:\Program Files\MongoDB\Server\5.0\bin), el cual abrirá una terminal iniciando el proceso de mongodb.
+
+![imagen](https://user-images.githubusercontent.com/44407924/148454442-2112420d-cb21-4149-ab0a-1fc77019b86b.png)
+
+o también en la consola de comandos copiamos las 2 lineas de código (reemplazando por la versión que tenga instalada)
 ```
 cd C:\Program Files\MongoDB\Server\5.0\bin
 mongod
 ```
-Luego inicializamos nuestro proyecto ejecutando el archivo **servidor.py**
+Luego, vamos a la carpeta contenedora de nuestro proyecto y ejecutamos el archivo **servidor.py**
+
+![imagen](https://user-images.githubusercontent.com/44407924/148455176-3c617101-0287-4874-8df8-1d6de5d59bb8.png)
+
+Que abrirá una terminal, iniciando el servidor local.
+![imagen](https://user-images.githubusercontent.com/44407924/148455268-9a3cacfb-c73c-4820-b009-ee7b3aafccd7.png)
+
+
 ## Una vez completado todo ✅
 Se podrá ver el inicio correctamente en el servidor local http://127.0.0.1:5000/
 ![imagen](https://user-images.githubusercontent.com/44407924/147611389-9f0958a2-7a2d-45b2-a737-546adec27694.png)
